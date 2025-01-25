@@ -1,6 +1,6 @@
 <!-- create a basic Navbar  -->
 <template>
-	<v-app-bar class="blue darken-4">
+	<v-app-bar class="grey darken-4	">
 		<div class="nav-container d-flex justify-space-around align-center">
 			<div class="nav-item">
 				<div class="d-flex align-center">
