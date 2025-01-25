@@ -1,6 +1,6 @@
 <!-- create a basic Navbar  -->
 <template>
-	<v-app-bar class="grey darken-4	">
+	<v-app-bar class="grey darken-4">
 		<div class="nav-container d-flex justify-space-around align-center">
 			<div class="nav-item">
 				<div class="d-flex align-center">
@@ -20,7 +20,7 @@
 			</div>
 			<div class="nav-item">
 				<v-avatar size="30">
-					<img class="hover" src="@/static/logo.png" alt="logo"  />
+					<img class="hover" src="@/static/logo.png" alt="logo" />
 				</v-avatar>
 			</div>
 		</div>
