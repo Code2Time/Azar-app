@@ -14,11 +14,13 @@
 						:label="input2Label"
 						:type="input2Type"
 						v-model="password"
+					
 					/>
 				</v-col>
 				<v-col cols="12">
 					<div class="d-flex align-center justify-space-between">
 						<v-checkbox
+							
 							color="primary"
 							hide-details
 							value="Remember me"
