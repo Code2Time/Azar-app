@@ -2,6 +2,7 @@
 	<v-app light>
 		<Navbar />
 		<Nuxt />
+		<Footer />
 	</v-app>
 </template>
 

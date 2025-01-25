@@ -4,33 +4,21 @@
 			<v-container>
 				<v-row class="d-flex align-center">
 					<v-col class="d-none d-lg-block">
-						<v-card
-							class="login-bg white--text d-flex flex-column pa-5"
-						>
+						<v-card class="login-bg white--text d-flex flex-column pa-5">
 							<h1 class="my-5 headline poppins-2">Continue with ...</h1>
 
-							<v-chip
-								class="ma-5 my-7 "
-								color="indigo"
-								label
-								text-color="white"
-							>
+							<v-chip class="ma-5 my-7" color="indigo" label text-color="white">
 								<v-icon left> mdi-linkedin </v-icon>
 								LinkedIn
 							</v-chip>
 
-							<v-chip
-								class="ma-5 my-7 "
-								color="blue"
-								label
-								text-color="white"
-							>
+							<v-chip class="ma-5 my-7" color="blue" label text-color="white">
 								<v-icon left> mdi-facebook </v-icon>
 								Facebook
 							</v-chip>
 
 							<v-chip
-								class="ma-5 my-7 "
+								class="ma-5 my-7"
 								color="blue darken-2"
 								label
 								text-color="white"
@@ -39,12 +27,7 @@
 								Google
 							</v-chip>
 
-							<v-chip
-								class="ma-5 my-7 "
-								color="cyan"
-								label
-								text-color="white"
-							>
+							<v-chip class="ma-5 my-7" color="cyan" label text-color="white">
 								<v-icon left> mdi-twitter </v-icon>
 								Twitter
 							</v-chip>
@@ -67,7 +50,7 @@
 							/>
 							<v-btn
 								@click="submited"
-								class="submit-btn poppins-2 grey text-center align-self-center"
+								class="submit-btn poppins-2 grey text-h6 text-center align-self-center"
 							>
 								Login
 							</v-btn>
