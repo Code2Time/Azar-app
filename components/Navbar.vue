@@ -5,20 +5,22 @@
 			<div class="nav-item">
 				<div class="d-flex align-center">
 					<div class="mx-2">
-						<nuxt-link class="link white--text poppins-2" to="/"
-							>Home</nuxt-link
-						>
+						<nuxt-link class="link white--text poppins-2" to="/" exact>
+							<v-icon color="white">mdi-home</v-icon>
+							<span>Home</span>
+						</nuxt-link>
 					</div>
 					<div class="mx-2">
-						<nuxt-link class="link white--text poppins-2" to="/login"
-							>Login</nuxt-link
-						>
+						<nuxt-link class="link white--text poppins-2" to="/login" exact>
+							<v-icon color="white">mdi-account</v-icon>
+							<span>Login</span>
+						</nuxt-link>
 					</div>
 				</div>
 			</div>
 			<div class="nav-item">
-				<v-avatar>
-					<img class="hover" src="@/static/logo.png" alt="logo" />
+				<v-avatar size="30">
+					<img class="hover" src="@/static/logo.png" alt="logo"  />
 				</v-avatar>
 			</div>
 		</div>
