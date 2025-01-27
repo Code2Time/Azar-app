@@ -1,5 +1,5 @@
 <template>
-	<v-app light>
+	<v-app>
 		<Navbar />
 		<Nuxt />
 		<Footer />
@@ -7,16 +7,22 @@
 </template>
 
 <script>
+// import Components
+
+import Navbar from '~/components/Common/Navbar.vue'
+import Footer from '~/components/Common/Footer.vue'
+
 export default {
 	name: 'DefaultLayout',
+	components: {
+		Navbar,
+		Footer,
+	},
 }
 </script>
 
 <style scoped>
-
-
 /* transition */
-
 
 .slide-enter-active,
 .slide-leave-active {
