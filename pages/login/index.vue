@@ -6,12 +6,24 @@
 	</v-app>
 </template>
 
+
+
+
 <script>
+// import Component 
+import LoginForm from '~/components/Feature/LoginForm.vue'
+
+
 export default {
 	name: 'LoginPage',
 	layout: 'login',
+	components: {
+		LoginForm,
+	},
 }
 </script>
+
+
 
 <style scoped>
 .custome-size {

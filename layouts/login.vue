@@ -7,11 +7,27 @@
 		<Footer />
 	</v-app>
 </template>
+
+
+
 <script>
+// import Components
+
+import Navbar from '~/components/Common/Navbar.vue'
+import Footer from '~/components/Common/Footer.vue'
+
+
 export default {
 	name: 'LoginLayout',
+	components: {
+		Navbar,
+		Footer,
+	},
 }
 </script>
+
+
+
 
 <style scoped>
 .Login_Layout {
