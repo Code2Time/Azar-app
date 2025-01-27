@@ -16,8 +16,8 @@
 						</div>
 						<form>
 							<v-container>
-								<v-row justify="center" >
-									<v-col col="12" sm="9"  md="6" align-self="center"> 
+								<v-row justify="center">
+									<v-col col="12" sm="9" md="6" align-self="center">
 										<v-text-field
 											label="Your Email Id"
 											type="Email"
@@ -27,7 +27,7 @@
 											dark
 										/>
 									</v-col>
-									<v-col cols="12" sm="9"  md="6" align-self="center">
+									<v-col cols="12" sm="9" md="6" align-self="center">
 										<v-text-field
 											label="Your Password"
 											type="password"
@@ -35,17 +35,15 @@
 											append-icon="mdi-lock"
 											v-model="password"
 											dark
-											
 										/>
 									</v-col>
 									<v-col cols="12">
 										<div class="d-flex align-center justify-space-between">
 											<v-checkbox
-											hide-details
-											label="Remember me"
-											color="primary"
-											dark
-												
+												hide-details
+												label="Remember me"
+												color="primary"
+												dark
 											></v-checkbox>
 											<!--now just go to test  -->
 											<nuxt-link to="/forgetpass" class="text-decoration-none"
@@ -57,10 +55,9 @@
 							</v-container>
 						</form>
 						<v-btn
-						   :disabled="isDisable"
-						   @click="Submited"
+							:disabled="isDisable"
+							@click="Submited"
 							class="submit-btn poppins-2 grey text-h6 text-center align-self-center rounded-pill"
-							
 						>
 							Login
 						</v-btn>
@@ -95,19 +92,18 @@ export default {
 			password: '',
 		}
 	},
-	methods :{
-		Submited(){
+	methods: {
+		Submited() {
 			alert('click shod')
 			this.user_name = ''
 			this.password = ''
-		}
+		},
 	},
-	computed : {
-		isDisable(){
+	computed: {
+		isDisable() {
 			return !this.user_name || !this.password
-		}
-	}
-	
+		},
+	},
 }
 </script>
 <style scoped>
