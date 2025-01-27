@@ -65,7 +65,7 @@
 							Login
 						</v-btn>
 
-						<p class="align-self-center">Or Countinue With....</p>
+						<p class="align-self-center">Or Continue With....</p>
 
 						<div class="d-flex justify-space-around align-center mt-5">
 							<v-btn color="primary" elevation="5" outlined>
