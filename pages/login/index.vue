@@ -1,18 +1,12 @@
 <template>
-	<v-app class="custome-size">
-		<div class="custome-size d-flex justify-center align-center">
-			<LoginForm />
-		</div>
-	</v-app>
+	<div class="custome-size d-flex justify-center align-center">
+		<LoginForm />
+	</div>
 </template>
 
-
-
-
 <script>
-// import Component 
+// import Component
 import LoginForm from '~/components/Feature/LoginForm.vue'
-
 
 export default {
 	name: 'LoginPage',
@@ -22,8 +16,6 @@ export default {
 	},
 }
 </script>
-
-
 
 <style scoped>
 .custome-size {

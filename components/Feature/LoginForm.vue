@@ -4,13 +4,13 @@
 			<v-row justify="center">
 				<v-col cols="12" sm="8" md="6" xl="4" align-self="center">
 					<v-card class="login-box-bg white--text d-flex flex-column pa-5">
-						<v-card-title class="text-h4 poppins-2 px-0 pb-10 dark--text">
+						<v-card-title class="text-h4 poppins-2 px-2 pb-10 dark--text">
 							Login
 						</v-card-title>
 						<div class="d-flex justify-space-between align-centeri">
-							<p>Dont have an accunt yet ?</p>
+							<p class="px-2">Dont have an accunt yet ?</p>
 							<!-- now just go to test -->
-							<nuxt-link exact to="/signup" class="text-decoration-none">
+							<nuxt-link exact to="/signup" class="text-decoration-none px-3">
 								sign up</nuxt-link
 							>
 						</div>
@@ -57,7 +57,7 @@
 						<v-btn
 							:disabled="isDisable"
 							@click="Submited"
-							class="submit-btn poppins-2 grey text-h6 text-center align-self-center rounded-pill"
+							class="submit-btn poppins-2 grey text-body1 text-center align-self-center rounded-pill"
 						>
 							Login
 						</v-btn>
@@ -67,7 +67,7 @@
 						<div class="d-flex justify-space-around align-center mt-5">
 							<v-btn color="primary" elevation="5" outlined>
 								<v-icon>mdi-google</v-icon>
-								<v-divider vertical class="ma-1" color="primary"></v-divider>
+								<v-divider vertical class="ma-1" color="blue"></v-divider>
 								<h3>Google</h3>
 							</v-btn>
 							<v-divider vertical class="primary"> </v-divider>
