@@ -1,10 +1,10 @@
 <template>
-	<v-avaatar :dark="isDark">
-		<v-btn icon >
+	<v-avatar :dark="isDark">
+		<v-btn icon>
 			<v-icon>{{ isDark ? 'mdi-weather-sunny' : 'mdi-weather-night' }}</v-icon>
 		</v-btn>
-	</v-avaatar>
-</template>
+	</v-avatar>
+</template>	
 
 
 
@@ -17,7 +17,7 @@ export default {
 		}
 	},
 	methods: {
-		toggleTheme() {
+		changeTheme() {
 			this.isDark = !this.isDark
 			this.$vuetify.theme.dark = this.isDark
 			localStorage.setItem('darkTheme', this.$vuetify.theme.dark)
