@@ -22,15 +22,21 @@
 				<v-avatar size="30">
 					<img class="hover" src="@/static/logo.png" alt="logo" />
 				</v-avatar>
+				<ToggleThemeBtn />
+				<span class="text-subtitle-2">(ToggleBtn is disable)</span>
 			</div>
 		</div>
 	</v-app-bar>
 </template>
 
 <script>
+// import component
+import ToggleThemeBtn from '../Feature/ToggleThemeBtn.vue'
+
+
 export default {
-	data() {
-		return {}
+	components: {
+		ToggleThemeBtn,
 	},
 }
 </script>

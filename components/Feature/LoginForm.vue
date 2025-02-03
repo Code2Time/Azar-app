@@ -18,23 +18,21 @@
 							<v-container>
 								<v-row justify="center">
 									<v-col col="12" sm="9" md="6" align-self="center">
-										<v-text-field
+										<Input
 											label="Your Email Id"
-											type="Email"
+											type="email"
 											color="primary"
-											append-icon="mdi-account	"
-											v-model="user_name"
-											dark
+											appendIcon="mdi-account"
+											@GetInputValue="getUserData"
 										/>
 									</v-col>
 									<v-col cols="12" sm="9" md="6" align-self="center">
-										<v-text-field
+										<Input
 											label="Your Password"
 											type="password"
 											color="primary"
-											append-icon="mdi-lock"
-											v-model="password"
-											dark
+											appendIcon="mdi-lock"
+											@GetInputValue="getPassData"
 										/>
 									</v-col>
 									<v-col cols="12">
@@ -83,9 +81,17 @@
 		</v-container>
 	</div>
 </template>
+
+
 <script>
+//import input component
+
+import Input from '~/components/Common/Input.vue'
 export default {
 	name: 'LoginForm',
+	components: {
+		Input,
+	},
 	data() {
 		return {
 			user_name: '',
@@ -93,6 +99,16 @@ export default {
 		}
 	},
 	methods: {
+		// save username data in user_name
+		getUserData(usernameData) {
+			this.user_name = usernameData
+		},
+
+		// save password data in password
+		getPassData(passwordData) {
+			this.password = passwordData
+		},
+
 		Submited() {
 			alert('click shod')
 			this.user_name = ''
@@ -106,7 +122,10 @@ export default {
 	},
 }
 </script>
+
+
 <style scoped>
+
 .login-container {
 	width: 100%;
 	height: 100vh;

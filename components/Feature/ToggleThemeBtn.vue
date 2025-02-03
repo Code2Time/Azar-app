@@ -1,10 +1,12 @@
 <template>
 	<v-avaatar :dark="isDark">
-		<v-btn icon @click="toggleTheme" >
+		<v-btn icon >
 			<v-icon>{{ isDark ? 'mdi-weather-sunny' : 'mdi-weather-night' }}</v-icon>
 		</v-btn>
 	</v-avaatar>
 </template>
+
+
 
 <script>
 export default {
@@ -24,4 +26,4 @@ export default {
 }
 </script>
 
-<style></style>
+

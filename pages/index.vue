@@ -8,8 +8,18 @@
 </template>
 
 <script>
+import Input from '~/components/Common/Input.vue'
 export default {
 	name: 'IndexPage',
+
+	components: {
+		Input,
+	},
+	methods: {
+		getInputValue(data) {
+			this.inputData = data
+		},
+	}
 }
 </script>
 
