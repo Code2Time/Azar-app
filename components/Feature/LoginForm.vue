@@ -19,20 +19,25 @@
 								<v-row justify="center">
 									<v-col col="12" sm="9" md="6" align-self="center">
 										<Input
+											ref="customInput1"
 											label="Your Email Id"
 											type="email"
 											color="primary"
-											appendIcon="mdi-account"
-											@GetInputValue="getUserData"
+											append-icon="mdi-account"
+											@GetInputValue="user_name = $event"
+											@InputCleared="handleInputCleared"
 										/>
 									</v-col>
 									<v-col cols="12" sm="9" md="6" align-self="center">
 										<Input
+											ref="customInput2"
 											label="Your Password"
-											type="password"
+											:type="showPassword ? 'text' : 'password' "
 											color="primary"
-											appendIcon="mdi-lock"
-											@GetInputValue="getPassData"
+											:append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+											:show-password="showPassword"
+											@GetInputValue="password = $event"
+											@update:showPassword="showPassword = $event"
 										/>
 									</v-col>
 									<v-col cols="12">
@@ -69,9 +74,9 @@
 								<h3>Google</h3>
 							</v-btn>
 							<v-divider vertical class="primary"> </v-divider>
-							<v-btn color="error" elevation="5" outlined>
+							<v-btn color="red" elevation="5" outlined>
 								<v-icon>mdi-facebook</v-icon>
-								<v-divider vertical class="ma-1" color="error"></v-divider>
+								<v-divider vertical class="ma-1" color="red"></v-divider>
 								<h3>Facebook</h3>
 							</v-btn>
 						</div>
@@ -81,7 +86,6 @@
 		</v-container>
 	</div>
 </template>
-
 
 <script>
 //import input component
@@ -96,36 +100,33 @@ export default {
 		return {
 			user_name: '',
 			password: '',
+			showPassword: false,
 		}
 	},
 	methods: {
-		// save username data in user_name
-		getUserData(usernameData) {
-			this.user_name = usernameData
-		},
-
-		// save password data in password
-		getPassData(passwordData) {
-			this.password = passwordData
-		},
-
 		Submited() {
-			alert('click shod')
+			console.log('username : ', this.user_name, ' pass : ', this.password)
+			alert('data saved in console ...')
+			this.$refs.customInput1.clearInput()
+			this.$refs.customInput2.clearInput()
+			this.showPassword = false
+		},
+		handleInputCleared() {
+			// به‌روزرسانی مقدار input در والد
 			this.user_name = ''
 			this.password = ''
+			console.log('username : ', this.user_name, 'pass : ', this.password)
 		},
 	},
 	computed: {
 		isDisable() {
-			return !this.user_name || !this.password
+			return this.user_name.trim() === '' || this.password.trim() === ''
 		},
 	},
 }
 </script>
 
-
 <style scoped>
-
 .login-container {
 	width: 100%;
 	height: 100vh;

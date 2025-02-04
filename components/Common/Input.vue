@@ -6,7 +6,8 @@
 		:color="color"
 		:dark="dark"
 		v-model="inputValue"
-		@keypress="updateValue"
+		@input="updateValue"
+		@click:append="togglePasswordVisibility"
 	>
 	</v-text-field>
 </template>
@@ -34,6 +35,10 @@ export default {
 			type: Boolean,
 			default: true,
 		},
+		showPassword: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	// data
 	data() {
@@ -46,7 +51,13 @@ export default {
 		updateValue() {
 			this.$emit('GetInputValue', this.inputValue)
 		},
+		clearInput() {
+			this.inputValue = ''
+			this.$emit('InputCleared')
+		},
+		togglePasswordVisibility() {
+			this.$emit('update:showPassword', !this.showPassword)
+		},
 	},
 }
 </script>
-<style></style>

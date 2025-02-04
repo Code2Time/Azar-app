@@ -4,16 +4,14 @@
 			<v-icon>{{ isDark ? 'mdi-weather-sunny' : 'mdi-weather-night' }}</v-icon>
 		</v-btn>
 	</v-avatar>
-</template>	
-
-
+</template>
 
 <script>
 export default {
-	name: 'ToggleBtn',
+	name: 'ToggleThemeBtn',
 	data() {
 		return {
-			isDark: false,
+			isDark: true,
 		}
 	},
 	methods: {
@@ -25,5 +23,3 @@ export default {
 	},
 }
 </script>
-
-
