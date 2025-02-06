@@ -27,26 +27,26 @@ export default {
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
 	plugins: ['~/plugins/vuetify.js'],
 
-	i18n: {
-		locales: [
-			{
-				code: 'en',
-				name: 'English',
-				file: 'en.js',
-			},
-			{
-				code: 'fa',
-				name: 'فارسی',
-				file: 'fa.js',
-			},
-		],
-		defaultLocales: 'en',
-		lazy: true,
-		langDir: 'locales/',
-		vueI18n: {
-			fallbackLocal: 'en',
-		},
-	},
+	// i18n: {
+	// 	locales: [
+	// 		{
+	// 			code: 'en',
+	// 			name: 'English',
+	// 			file: 'en.js',
+	// 		},
+	// 		{
+	// 			code: 'fa',
+	// 			name: 'فارسی',
+	// 			file: 'fa.js',
+	// 		},
+	// 	],
+	// 	defaultLocales: 'en',
+	// 	lazy: true,
+	// 	langDir: 'locales/',
+	// 	vueI18n: {
+	// 		fallbackLocal: 'en',
+	// 	},
+	// },
 
 	// Auto import components: https://go.nuxtjs.dev/config-components
 	components: true,
@@ -58,7 +58,7 @@ export default {
 	],
 
 	// Modules: https://go.nuxtjs.dev/config-modules
-	modules: ['nuxt-i18n'],
+	// modules: ['nuxt-i18n'],
 
 	// Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
 

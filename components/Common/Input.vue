@@ -5,7 +5,7 @@
 		:append-icon="appendIcon"
 		:color="color"
 		:dark="dark"
-		v-model="inputValue"
+		v-model="input_value"
 		@input="updateValue"
 		@click:append="togglePasswordVisibility"
 	>
@@ -43,16 +43,16 @@ export default {
 	// data
 	data() {
 		return {
-			inputValue: '',
+			input_value: '',
 		}
 	},
 	// keypress event
 	methods: {
 		updateValue() {
-			this.$emit('GetInputValue', this.inputValue)
+			this.$emit('GetInputValue', this.input_value)
 		},
 		clearInput() {
-			this.inputValue = ''
+			this.input_value = ''
 			this.$emit('InputCleared')
 		},
 		togglePasswordVisibility() {
