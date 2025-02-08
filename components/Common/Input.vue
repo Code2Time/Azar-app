@@ -8,7 +8,6 @@
 		:dark="dark"
 		:placeholder="placeholder"
 		:outlined="outlined"
-		:filled="filled"
 		:solo="solo"
 		:dense="dense"
 		:disabled="disabled"
@@ -30,7 +29,6 @@
 		:validate-on-blur="validateOnBlur"
 		:rounded="rounded"
 		:prepend-icon="prependIcon"
-		:shaped="shaped"
 		:single-line="singleLine"
 		:flat="flat"
 		:reverse="reverse"
@@ -46,8 +44,9 @@
 export default {
 	// prop validation
 	props: {
-		rules : {
-			type : Array
+		// rules for input validate
+		rules: {
+			type: Array,
 		},
 		label: {
 			type: String,
@@ -79,133 +78,127 @@ export default {
 			type: Boolean,
 			dafault: true,
 		},
-		filled: {
-			type: Boolean,
-			dafault: false,
-		},
+		//Changes the style of the input
 		solo: {
 			type: Boolean,
 			default: false,
 		},
+		//Reduces the input height
+
 		dense: {
 			type: Boolean,
 			default: false,
 		},
-		disabled :{
-			type : Boolean,
-			dafault : false
+		disabled: {
+			type: Boolean,
+			dafault: false,
 		},
-		readonly:{
-			type : Boolean ,
-			dafault : false
+		readonly: {
+			type: Boolean,
+			dafault: false,
 		},
-		prependIcon :{
-			type : String,
+		prependIcon: {
+			type: String,
 		},
-		clearable :{
-			type : Boolean,
-			default : false
+		clearable: {
+			type: Boolean,
+			default: false,
 		},
-		counter :{
-			type : Boolean,
-			default : false
+		counter: {
+			type: Boolean,
+			default: false,
 		},
-		hint :{
-			type : String,
+		// hint text
+		hint: {
+			type: String,
 		},
-		persistentHint : {
-		 type : Boolean,
-		 default : false
+		//Forces hint to always be visible
+		persistentHint: {
+			type: Boolean,
+			default: false,
 		},
-		error : {
-			type : Boolean,
-			default : false
+		error: {
+			type: Boolean,
+			default: false,
 		},
-		errorMessages :{
-			type : String , 
+		errorMessages: {
+			type: String,
 		},
-		success : {
-			type : Boolean,
-			default : false
+		success: {
+			type: Boolean,
+			default: false,
 		},
-		successMessages :  {
-			type : String
+		successMessages: {
+			type: String,
 		},
-		backgroundColor :{
-			type : String,
+		backgroundColor: {
+			type: String,
 		},
-		autofocus :{
-			type : Boolean,
-			default : false
+		autofocus: {
+			type: Boolean,
+			default: false,
 		},
-		hideDetails :{
-			type : Boolean,
-			default : false
+		hideDetails: {
+			type: Boolean,
+			default: false,
 		},
-		loading : {
-			type : Boolean,
-			default : false
+		loading: {
+			type: Boolean,
+			default: false,
 		},
-		prefix :{
-			type : String,
-		},
-		suffix :{
-			type : String
 
+		//Displays prefix text
+		prefix: {
+			type: String,
 		},
-		validateOnBlur:{
-			type : Boolean,
-			default : false
+		suffix: {
+			type: String,
 		},
-		rounded :{
-			type : Boolean,
-			default : false
+		validateOnBlur: {
+			type: Boolean,
+			default: false,
 		},
-		shaped :{
-			type : Boolean,
-			default : true
+		rounded: {
+			type: Boolean,
+			default: false,
 		},
-		singleLine : {
-			type : Boolean,
-			default : false
+		singleLine: {
+			type: Boolean,
+			default: false,
 		},
-		flat : {
-			type : Boolean,
-			default : false
+		// Removes elevation (shadow) added to element when using the solo or solo-inverted props
+		flat: {
+			type: Boolean,
+			default: false,
 		},
-		reverse : {
-			type : Boolean,
-			default : false
+		reverse: {
+			type: Boolean,
+			default: false,
 		},
-		
-		clearIcon : {
-			type : String
+
+		clearIcon: {
+			type: String,
 		},
 		value: {
-			type : String || Number
-		}
-
+			type: String || Number,
+			default: '',
+		},
 	},
 	// data
 	data() {
 		return {
-			input_value: '',
+			input_value: this.value,
 		}
 	},
-	// keypress event
 	methods: {
-		clearInput() {
-			this.input_value = ''
-			this.$emit('InputCleared')
-		},
 		togglePasswordVisibility() {
 			this.$emit('update:showPassword', !this.showPassword)
 		},
 	},
-	watch : {
-		inputs(){
-			console.log(this.input_value)
-		}
-	}
+	watch: {
+		input_value(new_value) {
+			this.$emit('input', new_value)
+		},
+	},
 }
 </script>
