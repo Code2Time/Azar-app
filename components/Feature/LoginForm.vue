@@ -23,6 +23,7 @@
 											label="Your Email Id"
 											type="email"
 											color="primary"
+											hint="Email"
 											append-icon="mdi-account"
 											@GetInputValue="user_name = $event"
 											@InputCleared="handleInputCleared"
@@ -32,10 +33,11 @@
 										<Input
 											ref="customInput2"
 											label="Your Password"
-											:type="showPassword ? 'text' : 'password' "
+											:type="showPassword ? 'text' : 'password'"
 											color="primary"
 											:append-icon="showPassword ? 'mdi-eye-off' : 'mdi-eye'"
 											:show-password="showPassword"
+											hint="Strong Password"
 											@GetInputValue="password = $event"
 											@update:showPassword="showPassword = $event"
 										/>
