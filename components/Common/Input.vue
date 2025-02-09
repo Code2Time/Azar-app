@@ -181,7 +181,7 @@ export default {
 		},
 		value: {
 			type: String || Number,
-			default: '',
+			 required: true,
 		},
 	},
 	// data
@@ -199,6 +199,9 @@ export default {
 		input_value(new_value) {
 			this.$emit('input', new_value)
 		},
+		value(new_value) {
+			this.input_value = new_value;
+		}
 	},
 }
 </script>
