@@ -27,7 +27,6 @@
 											v-model="user_name"
 											:value="user_name"
 										/>
-										<h1>{{ user_name }}</h1>
 									</v-col>
 									<v-col cols="12" sm="9" md="6" align-self="center">
 										<Input
@@ -41,7 +40,6 @@
 											@update:showPassword="show_password = $event"
 											:value="password"
 										/>
-										<h1>{{ password }}</h1>
 									</v-col>
 									<v-col cols="12">
 										<div class="d-flex align-center justify-space-between">
