@@ -9,30 +9,20 @@
 				<h1>
 					{{ $t('Test') }}
 				</h1>
-				<v-container>
-					<v-row>
-						<v-col>
-							<v-btn class="primary" @click="changeLang('en')"> English </v-btn>
-						</v-col>
-						<v-spacer></v-spacer>
-						<v-col>
-							<v-btn class="primary" @click="changeLang('fa')"> فارسی </v-btn>
-						</v-col>
-					</v-row>
-				</v-container>
+				<ToggleLangBtn />
 			</div>
 		</div>
 	</v-app>
 </template>
 
 <script>
+import ToggleLangBtn from '~/components/Feature/ToggleLangBtn.vue'
 export default {
 	name: 'IndexPage',
-	methods: {
-		changeLang(lang) {
-			this.$i18n.setLocale(lang)
-		},
+	components: {
+		ToggleLangBtn,
 	},
+	
 }
 </script>
 
