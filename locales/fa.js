@@ -9,9 +9,13 @@ export default {
 		Sign_Up: 'ساخت حساب',
 		Email_Id: 'آدرس ایمیل',
 		Password: 'رمز ورود',
+		Email_Hint : 'تست۱ ',
+		Pass_Hint : 'تست ۲',
 		Remember: 'منو بخاطر بسپار',
 		Forget_Pass: 'فراموشی رمز',
 		Countinue: 'با حساب های دیگر ادامه دهید...',
+			Google : 'گوگل',
+		Facebook : 'فیسبوک'
 	},
 	HomePage: {
 		HomeTitle: '!صفحه خانه و متنی برای تست رنگ',

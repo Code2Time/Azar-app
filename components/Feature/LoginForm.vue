@@ -5,13 +5,13 @@
 				<v-col cols="12" sm="8" md="6" xl="4" align-self="center">
 					<v-card class="login-box-bg white--text d-flex flex-column pa-5">
 						<v-card-title class="text-h4 poppins-2 px-2 pb-10 dark--text">
-							Login
+							{{ $t('Headers.Login') }}
 						</v-card-title>
 						<div class="d-flex justify-space-between align-centeri">
-							<p class="px-2">Dont have an accunt yet ?</p>
+							<p class="px-2">{{ $t('LoginBox.Ask_Account') }}</p>
 							<!-- now just go to test -->
 							<nuxt-link exact to="/signup" class="text-decoration-none px-3">
-								sign up</nuxt-link
+								{{ $t('LoginBox.Sign_Up') }}</nuxt-link
 							>
 						</div>
 						<form>
@@ -19,10 +19,11 @@
 								<v-row justify="center">
 									<v-col col="12" sm="9" md="6" align-self="center">
 										<Input
-											label="Your Email Id"
+											dir="ltr"
+											:label="$t('LoginBox.Email_Id')"
 											type="email"
 											color="primary"
-											hint="Email"
+											:hint="$t('LoginBox.Email_Hint')"
 											append-icon="mdi-account"
 											v-model="user_name"
 											:value="user_name"
@@ -30,12 +31,13 @@
 									</v-col>
 									<v-col cols="12" sm="9" md="6" align-self="center">
 										<Input
-											label="Your Password"
+											dir="ltr"
+											:label="$t('LoginBox.Password')"
 											:type="show_password ? 'text' : 'password'"
 											color="primary"
 											:append-icon="show_password ? 'mdi-eye-off' : 'mdi-eye'"
 											:show-password="show_password"
-											hint="Strong Password"
+											:hint="$t('LoginBox.Pass_Hint')"
 											v-model="password"
 											@update:showPassword="show_password = $event"
 											:value="password"
@@ -45,13 +47,15 @@
 										<div class="d-flex align-center justify-space-between">
 											<v-checkbox
 												hide-details
-												label="Remember me"
+												:label="$t('LoginBox.Remember')"
 												color="primary"
 												dark
 											></v-checkbox>
 											<!--now just go to test  -->
-											<nuxt-link to="/forgetpass" class="text-decoration-none"
-												>forget password?</nuxt-link
+											<nuxt-link
+												to="/forgetpass"
+												class="text-decoration-none"
+												>{{ $t('LoginBox.Forget_Pass') }}</nuxt-link
 											>
 										</div>
 									</v-col>
@@ -63,22 +67,22 @@
 							@click="Submited"
 							class="submit-btn poppins-2 grey text-body1 text-center align-self-center rounded-pill"
 						>
-							Login
+							{{ $t('Headers.Login') }}
 						</v-btn>
 
-						<p class="align-self-center">Or Continue With....</p>
+						<p class="align-self-center">{{ $t('LoginBox.Countinue') }}</p>
 
 						<div class="d-flex justify-space-around align-center mt-5">
 							<v-btn color="primary" elevation="5" outlined>
 								<v-icon>mdi-google</v-icon>
 								<v-divider vertical class="ma-1" color="blue"></v-divider>
-								<h3>Google</h3>
+								<h3>{{ $t('LoginBox.Google') }}</h3>
 							</v-btn>
 							<v-divider vertical class="primary"> </v-divider>
 							<v-btn color="red" elevation="5" outlined>
 								<v-icon>mdi-facebook</v-icon>
 								<v-divider vertical class="ma-1" color="red"></v-divider>
-								<h3>Facebook</h3>
+								<h3>{{ $t('LoginBox.Facebook') }}</h3>
 							</v-btn>
 						</div>
 					</v-card>

@@ -1,5 +1,5 @@
 <template>
-	<v-app>
+	<v-app :dir="isRTL ? 'rtl' : 'ltr'">
 		<Navbar />
 		<Nuxt />
 		<Footer />
@@ -17,6 +17,11 @@ export default {
 	components: {
 		Navbar,
 		Footer,
+	},
+	computed: {
+		isRTL() {
+			return this.$i18n.locale === 'fa'
+		},
 	},
 }
 </script>

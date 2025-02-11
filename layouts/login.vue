@@ -1,5 +1,5 @@
 <template>
-	<v-app>
+	<v-app :dir="isRTL ? 'rtl' : 'ltr'">
 		<Navbar />
 		<div class="Login_Layout">
 			<Nuxt />
@@ -8,14 +8,11 @@
 	</v-app>
 </template>
 
-
-
 <script>
 // import Components
 
 import Navbar from '~/components/Common/Navbar.vue'
 import Footer from '~/components/Common/Footer.vue'
-
 
 export default {
 	name: 'LoginLayout',
@@ -23,11 +20,13 @@ export default {
 		Navbar,
 		Footer,
 	},
+	computed: {
+		isRTL() {
+			return this.$i18n.locale === 'fa'
+		},
+	},
 }
 </script>
-
-
-
 
 <style scoped>
 .Login_Layout {

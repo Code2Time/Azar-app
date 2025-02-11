@@ -8,10 +8,14 @@ export default {
 		Sign_Up: 'sign up',
 		Email_Id: 'Your Email Id',
 		Password: 'Your Password',
+		Email_Hint : 'test1',
+		Pass_Hint : 'test2',
 		Remember: 'Remember me',
 		Forget_Pass: 'forget password?',
 		Countinue: 'Or Continue With....',
 		Ask_Account: 'Dont have an accunt yet ?',
+		Google : 'Google',
+		Facebook : 'Facebook'
 	},
 	HomePage: {
 		HomeTitle: 'Home Page ! this color is a test',

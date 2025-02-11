@@ -7,23 +7,23 @@
 					<div class="mx-2">
 						<nuxt-link class="link white--text poppins-2" to="/" exact>
 							<v-icon color="white">mdi-home</v-icon>
-							<span>Home</span>
+							<span>{{$t('Headers.Home')}}</span>
 						</nuxt-link>
 					</div>
 					<div class="mx-2">
 						<nuxt-link class="link white--text poppins-2" to="/login" exact>
 							<v-icon color="white">mdi-account</v-icon>
-							<span>Login</span>
+							<span>{{ $t('Headers.Login') }}</span>
 						</nuxt-link>
 					</div>
 				</div>
 			</div>
-			<div class="nav-item">
+			<div class="nav-item d-flex justify-center align-center">
 				<v-avatar size="30">
 					<img class="hover" src="@/static/logo.png" alt="logo" />
 				</v-avatar>
-				<ToggleThemeBtn />
-				<span class="text-subtitle-2">(ToggleBtn is disable)</span>
+				<!-- <ToggleThemeBtn /> -->
+				<languageBtn />
 			</div>
 		</div>
 	</v-app-bar>
@@ -31,12 +31,13 @@
 
 <script>
 // import component
-import ToggleThemeBtn from '../Feature/ToggleThemeBtn.vue'
-
+// import ToggleThemeBtn from '../Feature/ToggleThemeBtn.vue'
+import LanguageBtn from '../Feature/LanguageBtn.vue'
 
 export default {
 	components: {
-		ToggleThemeBtn,
+		// ToggleThemeBtn,
+		LanguageBtn,
 	},
 }
 </script>
