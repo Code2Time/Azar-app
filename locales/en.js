@@ -15,7 +15,9 @@ export default {
 		Countinue: 'Or Continue With....',
 		Ask_Account: 'Dont have an accunt yet ?',
 		Google : 'Google',
-		Facebook : 'Facebook'
+		Facebook : 'Facebook',
+		Input_error_username : 'Incorrect username',
+		Input_erroe_password : 'Incorrect password'
 	},
 	HomePage: {
 		HomeTitle: 'Home Page ! this color is a test',

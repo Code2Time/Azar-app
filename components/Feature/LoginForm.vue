@@ -19,35 +19,34 @@
 								<v-row justify="center">
 									<v-col col="12" sm="9" md="6" align-self="center">
 										<Input
-											dir="ltr"
 											:label="$t('LoginBox.Email_Id')"
-											type="email"
-											color="primary"
 											:hint="$t('LoginBox.Email_Hint')"
 											append-icon="mdi-account"
+											:rules="user_rules"
 											v-model="user_name"
 											:value="user_name"
+											color="primary"
+											type="email"
+											dir="ltr"
 										/>
 									</v-col>
 									<v-col cols="12" sm="9" md="6" align-self="center">
 										<Input
-											dir="ltr"
 											:label="$t('LoginBox.Password')"
-											:type="show_password ? 'text' : 'password'"
-											color="primary"
-											:append-icon="show_password ? 'mdi-eye-off' : 'mdi-eye'"
-											:show-password="show_password"
 											:hint="$t('LoginBox.Pass_Hint')"
+											:rules="password_rules"
 											v-model="password"
-											@update:showPassword="show_password = $event"
 											:value="password"
+											type="password"
+											color="primary"
+											dir="ltr"
 										/>
 									</v-col>
 									<v-col cols="12">
 										<div class="d-flex align-center justify-space-between">
 											<v-checkbox
-												hide-details
 												:label="$t('LoginBox.Remember')"
+												hide-details
 												color="primary"
 												dark
 											></v-checkbox>
@@ -105,12 +104,23 @@ export default {
 		return {
 			user_name: '',
 			password: '',
-			show_password: false,
+			user_rules: [
+				(value) => !!value || 'این فیلد اجباری است.',
+				(value) =>
+					/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) ||
+					this.$t('LoginBox.Input_error_username'),
+			],
+			password_rules: [
+				(value) => !!value || 'این فیلد اجباری است',
+				(value) =>
+					/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
+						value
+					) || this.$t('LoginBox.Input_erroe_password'),
+			],
 		}
 	},
 	methods: {
 		Submited() {
-			this.show_password = false
 			this.user_name = ''
 			this.password = ''
 			// console.log(this.user_name , this.password)

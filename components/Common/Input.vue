@@ -1,41 +1,37 @@
 <template>
 	<v-text-field
-		:rules="rules"
-		:label="label"
-		:type="type"
-		:append-icon="appendIcon"
-		:color="color"
-		:dark="dark"
+		@click:append="togglePasswordVisibility"
+		:background-color="backgroundColor"
+		:validate-on-blur="validateOnBlur"
+		:persistent-hint="persistentHint"
+		:append-icon="computedAppendIcon"
+		:prepend-icon="prependIcon"
+		:hide-details="hideDetails"
 		:placeholder="placeholder"
+		:single-line="singleLine"
+		:clear-icon="clearIcon"
+		:clearable="clearable"
+		:autofocus="autofocus"
+		v-model="input_value"
 		:outlined="outlined"
-		:solo="solo"
-		:dense="dense"
 		:disabled="disabled"
 		:readonly="readonly"
-		:clearable="clearable"
 		:counter="counter"
-		:hint="hint"
-		:persistent-hint="persistentHint"
-		:error="error"
-		:error-messages="errorMessages"
-		:success="success"
-		:success-messages="successMessages"
-		:background-color="backgroundColor"
-		:hide-details="hideDetails"
-		:autofocus="autofocus"
 		:loading="loading"
-		:prefix="prefix"
-		:suffix="suffix"
-		:validate-on-blur="validateOnBlur"
 		:rounded="rounded"
-		:prepend-icon="prependIcon"
-		:single-line="singleLine"
-		:flat="flat"
 		:reverse="reverse"
-		:clear-icon="clearIcon"
+		:type="inputType"
+		:suffix="suffix"
+		:prefix="prefix"
+		:label="label"
+		:color="color"
+		:dense="dense"
+		:rules="rules"
 		:value="value"
-		v-model="input_value"
-		@click:append="togglePasswordVisibility"
+		:dark="dark"
+		:solo="solo"
+		:hint="hint"
+		:flat="flat"
 	>
 	</v-text-field>
 </template>
@@ -67,16 +63,12 @@ export default {
 			type: Boolean,
 			default: true,
 		},
-		showPassword: {
-			type: Boolean,
-			default: false,
-		},
 		placeholder: {
 			type: String,
 		},
 		outlined: {
 			type: Boolean,
-			dafault: true,
+			default: false,
 		},
 		//Changes the style of the input
 		solo: {
@@ -117,20 +109,20 @@ export default {
 			type: Boolean,
 			default: false,
 		},
-		error: {
-			type: Boolean,
-			default: false,
-		},
-		errorMessages: {
-			type: String,
-		},
-		success: {
-			type: Boolean,
-			default: false,
-		},
-		successMessages: {
-			type: String,
-		},
+		// error: {
+		// 	type: Boolean,
+		// 	default: false,
+		// },
+		// errorMessages: {
+		// 	type: String,
+		// },
+		// success: {
+		// 	type: Boolean,
+		// 	default: false,
+		// },
+		// successMessages: {
+		// 	type: String,
+		// },
 		backgroundColor: {
 			type: String,
 		},
@@ -180,28 +172,43 @@ export default {
 			type: String,
 		},
 		value: {
-			type: String || Number,
-			 required: true,
+			type: [String, Number],
+			required: true,
 		},
 	},
 	// data
 	data() {
 		return {
 			input_value: this.value,
+			show_password: false,
 		}
-	},
-	methods: {
-		togglePasswordVisibility() {
-			this.$emit('update:showPassword', !this.showPassword)
-		},
 	},
 	watch: {
 		input_value(new_value) {
 			this.$emit('input', new_value)
 		},
 		value(new_value) {
-			this.input_value = new_value;
-		}
+			this.input_value = new_value
+		},
+	},
+	methods: {
+		togglePasswordVisibility() {
+			this.show_password = !this.show_password
+		},
+	},
+	computed: {
+		computedAppendIcon() {
+			if (this.type === 'password') {
+				return this.show_password ? 'mdi-eye-off' : 'mdi-eye'
+			}
+			return this.appendIcon
+		},
+		inputType() {
+			if (this.type === 'password') {
+				return this.show_password ? 'text' : 'password'
+			}
+			return this.type
+		},
 	},
 }
 </script>

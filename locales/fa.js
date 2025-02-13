@@ -15,7 +15,9 @@ export default {
 		Forget_Pass: 'فراموشی رمز',
 		Countinue: 'با حساب های دیگر ادامه دهید...',
 			Google : 'گوگل',
-		Facebook : 'فیسبوک'
+		Facebook : 'فیسبوک',
+		Input_error_username : 'ایمیل نامعتبر ',
+		Input_erroe_password : 'رمز عبور نامعتبر'
 	},
 	HomePage: {
 		HomeTitle: '!صفحه خانه و متنی برای تست رنگ',
