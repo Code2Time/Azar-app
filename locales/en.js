@@ -16,8 +16,9 @@ export default {
 		Ask_Account: 'Dont have an accunt yet ?',
 		Google : 'Google',
 		Facebook : 'Facebook',
-		Input_error_username : 'Incorrect username',
-		Input_erroe_password : 'Incorrect password'
+		Empty_Input : 'please fill out this field',
+		Input_Error_Username : 'Incorrect username',
+		Input_Error_Password : 'Incorrect password'
 	},
 	HomePage: {
 		HomeTitle: 'Home Page ! this color is a test',

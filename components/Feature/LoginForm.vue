@@ -105,17 +105,17 @@ export default {
 			user_name: '',
 			password: '',
 			user_rules: [
-				(value) => !!value || 'این فیلد اجباری است.',
+				(value) => !!value || this.$t('LoginBox.Empty_Input'),
 				(value) =>
 					/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) ||
-					this.$t('LoginBox.Input_error_username'),
+					this.$t('LoginBox.Input_Error_Username'),
 			],
 			password_rules: [
-				(value) => !!value || 'این فیلد اجباری است',
+				(value) => !!value || this.$t('LoginBox.Empty_Input'),
 				(value) =>
 					/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
 						value
-					) || this.$t('LoginBox.Input_erroe_password'),
+					) || this.$t('LoginBox.Input_Error_Password'),
 			],
 		}
 	},
