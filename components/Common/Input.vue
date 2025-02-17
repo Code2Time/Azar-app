@@ -42,7 +42,7 @@ export default {
 	props: {
 		// rules for input validate
 		rules: {
-			type: Array,
+			type: [Array || String]
 		},
 		label: {
 			type: String,

@@ -22,7 +22,7 @@
 											:label="$t('LoginBox.Email_Id')"
 											:hint="$t('LoginBox.Email_Hint')"
 											append-icon="mdi-account"
-											:rules="user_rules"
+											:rules="user_validate"
 											v-model="user_name"
 											:value="user_name"
 											color="primary"
@@ -92,9 +92,15 @@
 </template>
 
 <script>
+
 //import input component
 
 import Input from '~/components/Common/Input.vue'
+
+// import rules 
+
+import { require , user_rule } from '~/helpers/validationRules.js';
+
 export default {
 	name: 'LoginForm',
 	components: {
@@ -104,12 +110,16 @@ export default {
 		return {
 			user_name: '',
 			password: '',
-			user_rules: [
-				(value) => !!value || this.$t('LoginBox.Empty_Input'),
-				(value) =>
-					/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) ||
-					this.$t('LoginBox.Input_Error_Username'),
+			user_validate : [
+				(value) =>require(value , {$i18n : this.$i18n}),
+				(value) =>user_rule(value , {$i18n : this.$i18n}),
 			],
+			// user_rules: [
+			// 	(value) => !!value || this.$t('LoginBox.Empty_Input'),
+			// 	(value) =>
+			// 		/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) ||
+			// 		this.$t('LoginBox.Input_Error_Username'),
+			// ],
 			password_rules: [
 				(value) => !!value || this.$t('LoginBox.Empty_Input'),
 				(value) =>
