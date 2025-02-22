@@ -26,7 +26,7 @@
 		:label="label"
 		:color="color"
 		:dense="dense"
-		:rules="rules"
+		:rules="processedRules"
 		:value="value"
 		:dark="dark"
 		:solo="solo"
@@ -37,12 +37,15 @@
 </template>
 
 <script>
+// import rules
+import { require, email } from '~/helpers/validationRules'
+
 export default {
 	// prop validation
 	props: {
 		// rules for input validate
 		rules: {
-			type: [Array || String]
+			type: String,
 		},
 		label: {
 			type: String,
@@ -209,6 +212,29 @@ export default {
 			}
 			return this.type
 		},
+		processedRules() {
+			if (!this.rules) return []
+
+			// تبدیل رشته به آرایه و حذف فضاهای خالی
+			const rulesArray = this.rules.split(',').map((rule) => rule.trim())
+
+			return rulesArray.map((rule) => {
+				// پردازش قوانین ساده
+				return this.rulesMap[rule] || (() => true)
+			})
+		},
+		rulesMap() {
+			return {
+				require,
+				email,
+			}
+		},
+	},
+
+
+	
+	mounted() {
+		console.log('your rules is ....', this.rules , typeof(this.rules))
 	},
 }
 </script>

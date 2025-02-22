@@ -22,7 +22,7 @@
 											:label="$t('LoginBox.Email_Id')"
 											:hint="$t('LoginBox.Email_Hint')"
 											append-icon="mdi-account"
-											:rules="user_validate"
+											rules="require , email"
 											v-model="user_name"
 											:value="user_name"
 											color="primary"
@@ -34,7 +34,7 @@
 										<Input
 											:label="$t('LoginBox.Password')"
 											:hint="$t('LoginBox.Pass_Hint')"
-											:rules="password_rules"
+											rules="require"
 											v-model="password"
 											:value="password"
 											type="password"
