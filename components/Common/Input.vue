@@ -214,19 +214,16 @@ export default {
 		},
 		processedRules() {
 			if (!this.rules) return []
-
-			// تبدیل رشته به آرایه و حذف فضاهای خالی
 			const rulesArray = this.rules.split(',').map((rule) => rule.trim())
 
 			return rulesArray.map((rule) => {
-				// پردازش قوانین ساده
 				return this.rulesMap[rule] || (() => true)
 			})
 		},
 		rulesMap() {
 			return {
 				require,
-				email,
+				email,	
 			}
 		},
 	},
@@ -235,6 +232,7 @@ export default {
 	
 	mounted() {
 		console.log('your rules is ....', this.rules , typeof(this.rules))
+		console.log(this.$i18n)
 	},
 }
 </script>
