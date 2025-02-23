@@ -193,6 +193,9 @@ export default {
 		value(new_value) {
 			this.input_value = new_value
 		},
+		rule(new_rule) {
+			this.rule = new_rule
+		},
 	},
 	methods: {
 		togglePasswordVisibility() {
@@ -223,15 +226,13 @@ export default {
 		rulesMap() {
 			return {
 				require,
-				email,	
+				email,
 			}
 		},
 	},
 
-
-	
 	mounted() {
-		console.log('your rules is ....', this.rules , typeof(this.rules))
+		console.log('your rules is ....', this.rules, typeof this.rules)
 		console.log(this.$i18n)
 	},
 }
