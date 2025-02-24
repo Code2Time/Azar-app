@@ -37,8 +37,6 @@
 </template>
 
 <script>
-// import rules
-import { require, email } from '~/helpers/validationRules'
 
 export default {
 	// prop validation
@@ -121,10 +119,10 @@ export default {
 		// },
 		// success: {
 		// 	type: Boolean,
-		// 	default: false,
 		// },
 		// successMessages: {
 		// 	type: String,
+		// 	default : 'good lock'
 		// },
 		backgroundColor: {
 			type: String,
@@ -220,20 +218,9 @@ export default {
 			const rulesArray = this.rules.split(',').map((rule) => rule.trim())
 
 			return rulesArray.map((rule) => {
-				return this.rulesMap[rule] || (() => true)
+				return this.$validationRules[rule] || (() => true)
 			})
-		},
-		rulesMap() {
-			return {
-				require,
-				email,
-			}
-		},
-	},
-
-	mounted() {
-		console.log('your rules is ....', this.rules, typeof this.rules)
-		console.log(this.$i18n)
+		}
 	},
 }
 </script>

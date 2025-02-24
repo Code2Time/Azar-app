@@ -20,7 +20,6 @@
 									<v-col col="12" sm="9" md="6" align-self="center">
 										<Input
 											:label="$t('LoginBox.Email_Id')"
-											:hint="$t('LoginBox.Email_Hint')"
 											append-icon="mdi-account"
 											rules="require , email"
 											v-model="user_name"
@@ -33,7 +32,6 @@
 									<v-col cols="12" sm="9" md="6" align-self="center">
 										<Input
 											:label="$t('LoginBox.Password')"
-											:hint="$t('LoginBox.Pass_Hint')"
 											rules="require"
 											v-model="password"
 											:value="password"
@@ -92,14 +90,10 @@
 </template>
 
 <script>
-
 //import input component
 
 import Input from '~/components/Common/Input.vue'
 
-// import rules 
-
-import { require , user_rule } from '~/helpers/validationRules.js';
 
 export default {
 	name: 'LoginForm',
@@ -110,30 +104,13 @@ export default {
 		return {
 			user_name: '',
 			password: '',
-			user_validate : [
-				(value) =>require(value , {$i18n : this.$i18n}),
-				(value) =>user_rule(value , {$i18n : this.$i18n}),
-			],
-			// user_rules: [
-			// 	(value) => !!value || this.$t('LoginBox.Empty_Input'),
-			// 	(value) =>
-			// 		/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value) ||
-			// 		this.$t('LoginBox.Input_Error_Username'),
-			// ],
-			password_rules: [
-				(value) => !!value || this.$t('LoginBox.Empty_Input'),
-				(value) =>
-					/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/.test(
-						value
-					) || this.$t('LoginBox.Input_Error_Password'),
-			],
 		}
 	},
 	methods: {
 		Submited() {
+			console.log(this.user_name, this.password)
 			this.user_name = ''
 			this.password = ''
-			// console.log(this.user_name , this.password)
 		},
 	},
 	computed: {
