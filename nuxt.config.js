@@ -27,7 +27,7 @@ export default {
 	css: ['@/dist/Styles/globalClass.css'],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-	plugins: ['~/plugins/vuetify.js' , '~/plugins/validationRules.js'],
+	plugins: ['~/plugins/vuetify.js' , '~/plugins/validationRules.js' , '~/plugins/axios.js'],
 
 	i18n: i18nConfig,
 
