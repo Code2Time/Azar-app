@@ -41,7 +41,7 @@ export default {
 	],
 
 	// Modules: https://go.nuxtjs.dev/config-modules
-	modules: ['nuxt-i18n'],
+	modules: ['nuxt-i18n', 'cookie-universal-nuxt'],
 
 	// Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
 
