@@ -39,6 +39,13 @@
 											color="primary"
 											dir="ltr"
 										/>
+										<!-- number input type test -->
+										<Input
+											type="text"
+											label="your number"
+											:value="number"
+											v-model="formattedNumber"
+										/>
 									</v-col>
 									<v-col cols="12">
 										<div class="d-flex align-center justify-space-between">
@@ -94,7 +101,6 @@
 
 import Input from '~/components/Common/Input.vue'
 
-
 export default {
 	name: 'LoginForm',
 	components: {
@@ -104,6 +110,7 @@ export default {
 		return {
 			user_name: '',
 			password: '',
+			number: '',
 		}
 	},
 	methods: {
@@ -116,6 +123,14 @@ export default {
 	computed: {
 		isDisable() {
 			return this.user_name.trim() === '' || this.password.trim() === ''
+		},
+		formattedNumber: {
+			get() {
+				return this.number ? Number(this.number).toLocaleString() : ''
+			},
+			set(value) {
+				this.number = value.replace(/,/g, '')
+			},
 		},
 	},
 }

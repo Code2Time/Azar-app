@@ -37,7 +37,6 @@
 </template>
 
 <script>
-
 export default {
 	// prop validation
 	props: {
@@ -220,7 +219,7 @@ export default {
 			return rulesArray.map((rule) => {
 				return this.$validationRules[rule] || (() => true)
 			})
-		}
+		},
 	},
 }
 </script>
