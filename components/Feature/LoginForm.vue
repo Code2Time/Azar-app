@@ -39,7 +39,10 @@
 											color="primary"
 											dir="ltr"
 										/>
-										<!-- number input type test -->
+									</v-col>
+									<!-- number input type test -->
+									<v-col cols="12" align-self="center">
+										<span class="red__text">this input just for test</span>
 										<Input
 											type="text"
 											label="your number"

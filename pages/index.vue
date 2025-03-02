@@ -6,23 +6,34 @@
 			</h1>
 			<h3 class="poppins-2">{{ $t('HomePage.Home_Discription') }}</h3>
 			<div class="d-flex flex-column justify-center align-center pa-3">
-				{{ number }}
+				<Button value="Test Btn" @click="customClick" />
 			</div>
 		</div>
 	</v-app>
 </template>
 
 <script>
+import Button from '~/components/Common/Button.vue'
+
 export default {
 	name: 'IndexPage',
 	data() {
 		return {
-			num : 100215454
+			num: 100215454,
 		}
 	},
-	computed : {
-		number(){
+	components: {
+		Button,
+	},
+
+	computed: {
+		number() {
 			return this.num.toLocaleString()
+		},
+	},
+	methods :{
+		customClick(){
+			alert('custome clicked')
 		}
 	}
 }

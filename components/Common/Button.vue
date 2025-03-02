@@ -42,6 +42,7 @@
         :link="link"
         :nuxt="nuxt"
         :plain="plain"
+        @click="handleClick"
 	>
 		{{value}}
 	</v-btn>
@@ -181,6 +182,11 @@ export default {
         },
 
 	},
+    methods : {
+        handleClick(){
+            this.$emit('click')
+        }
+    }
 }
 </script>
 <style></style>
