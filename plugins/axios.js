@@ -3,12 +3,10 @@ export default function ({ $axios }, inject) {
     $axios.setBaseURL('bace url')
   
     $axios.onRequest(config => {
-      console.log('Making request to ' + config.url)
       return config
     })
   
     $axios.onResponse(response => {
-      console.log('Received response from ' + response.config.url)
       return response
     })
   

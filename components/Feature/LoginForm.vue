@@ -42,7 +42,7 @@
 									</v-col>
 									<!-- number input type test -->
 									<v-col cols="12" align-self="center">
-										<span class="red__text">this input just for test</span>
+										<span class="red--text">this input just for test</span>
 										<Input
 											type="text"
 											label="your number"
@@ -69,13 +69,15 @@
 								</v-row>
 							</v-container>
 						</form>
-						<v-btn
+						<Button
+							class="align-self-center poppins-2 rounded-pill ma-5"
+							:value="$t('Headers.Login')"
 							:disabled="isDisable"
 							@click="Submited"
-							class="submit-btn poppins-2 grey text-body1 text-center align-self-center rounded-pill"
-						>
-							{{ $t('Headers.Login') }}
-						</v-btn>
+							:rounded="true"
+							color="blue"
+							width="60%"
+						/>
 
 						<p class="align-self-center">{{ $t('LoginBox.Countinue') }}</p>
 
@@ -103,11 +105,13 @@
 //import input component
 
 import Input from '~/components/Common/Input.vue'
+import Button from '../Common/Button.vue'
 
 export default {
 	name: 'LoginForm',
 	components: {
 		Input,
+		Button,
 	},
 	data() {
 		return {
@@ -151,10 +155,5 @@ export default {
 	background-color: rgba(17, 25, 40, 0.405);
 	border-radius: 12px;
 	border: 1px solid rgba(255, 255, 255, 0.125);
-}
-
-.submit-btn {
-	width: 60%;
-	margin: 50px auto;
 }
 </style>

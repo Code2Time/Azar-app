@@ -1,50 +1,50 @@
 <template>
 	<v-btn
-		:color="color"
+		:exact-active-class="exactActiveClass"
+		:active-class="activeClass"
+		:input-value="inputValue"
+		:min-height="minHeight"
+		:max-height="maxHeight"
+		:exact-path="exactPath"
+		:elevation="elevation"
+		:depressed="depressed"
+		:max-width="maxWidth"
+		:min-width="minWidth"
+		:absolute="absolute"
 		:disabled="disabled"
 		:outlined="outlined"
-		:text="text"
+		@click="handleClick"
 		:rounded="rounded"
-		:icon="icon"
 		:loading="loading"
+		:x-large="Xlarge"
+		:x-small="Xsmall"
+		:ripple="ripple"
+		:bottom="bottom"
+		:append="append"
+		:height="height"
 		:block="block"
-		:depressed="depressed"
+		:large="large"
+		:small="small"
+		:light="light"
+		:color="color"
+		:plain="plain"
+		:exact="exact"
+		:width="width"
+		:value="value"
+		:fixed="fixed"
+		:right="right"
+		:icon="icon"
+		:text="text"
+		:type="type"
+		:dark="dark"
+		:href="href"
+		:nuxt="nuxt"
+		:link="link"
+		:left="left"
 		:fab="fab"
-        :large="large"
-        :small="small"
-        :x-large="Xlarge"
-        :x-small="Xsmall"
-        :to="to"
-        :href="href"
-        :dark="dark"
-        :light="light"
-        :elevation="elevation"
-        :ripple="ripple"
-        :type="type"
-        :width="width"
-        :max-width="maxWidth"
-        :min-width="minWidth"
-        :height="height"
-        :max-height="maxHeight"
-        :min-height="minHeight"
-        :value="value"
-        :active-class="activeClass"
-        :exact="exact"
-        :exact-active-class="exactActiveClass"
-        :exact-path="exactPath"
-        :absolute="absolute"
-        :append="append"
-        :bottom="bottom"
-        :fixed="fixed"
-        :input-value="inputValue"
-        :left="left"
-        :right="right"
-        :link="link"
-        :nuxt="nuxt"
-        :plain="plain"
-        @click="handleClick"
+		:to="to"
 	>
-		{{value}}
+		{{ value }}
 	</v-btn>
 </template>
 <script>
@@ -60,7 +60,7 @@ export default {
 		},
 		outlined: {
 			type: Boolean,
-            default : true
+			default: true,
 		},
 		text: {
 			type: Boolean,
@@ -84,109 +84,112 @@ export default {
 		fab: {
 			type: Boolean,
 		},
-        large : {
-            type : Boolean
-        },
-        small : {
-            type : Boolean
-        },
-        Xlarge : {
-            type : Boolean
-        },
-        Xsmall : {
-            type : Boolean
-        },
-        to :{
-            type : [String || Object]
-        } ,
-         href :{
-            type : [String || Object]
-        },
-        dark :{
-            type : Boolean
-        },
-        light :{
-            type : Boolean
-        },
-        elevation :{
-            type : [Number || String]
-        },
-        ripple :{     //(ripple effect
-            type : [Boolean , Object],
-        },
-        type : {
-            type : String
-        },
-        with :{
-            type : String
-        },
-        minWidth :{
-            type : String
-        },
-        maxWidth :{
-            type : String
-        },
-        height :{
-            type : String
-        },
-        minHeight :{
-            type : String
-        },
-        maxHeight :{
-            type : String
-        },
-        value :{
-            type : [String || Number]
-        },
-        activeClass : {
-            type : String
-        },
-        exact : {
-            type : Boolean
-        },
-        exactActiveClass :{
-            type : String
-        },
-        exactPath : {
-            type : Boolean
-        },
-        absolute :{
-            type : Boolean
-        },
-        append :{    // append link
-            type : Boolean
-        },
-        bottom :{  
-            type : Boolean
-        },
-        fixed : {
-            type  : Boolean
-        },
-        inputValue : {
-            type : [String || Number || Object || Array]
-        },
-        left :{
-            type : Boolean
-        },
-        right :{
-            type : Boolean
-        },
-        link :{
-            type : Boolean
-        },
-        nuxt : {   // use vue router || use Spa
-            type : Boolean
-        },
-        plain : {  // remove background color in hover
-            type  : Boolean,
-        },
-
+		large: {
+			type: Boolean,
+		},
+		small: {
+			type: Boolean,
+		},
+		Xlarge: {
+			type: Boolean,
+		},
+		Xsmall: {
+			type: Boolean,
+		},
+		to: {
+			type: [String || Object],
+		},
+		href: {
+			type: [String || Object],
+		},
+		dark: {
+			type: Boolean,
+		},
+		light: {
+			type: Boolean,
+		},
+		elevation: {
+			type: [Number || String],
+		},
+		ripple: {
+			//(ripple effect
+			type: [Boolean, Object],
+		},
+		type: {
+			type: String,
+		},
+		width: {
+			type: String,
+		},
+		minWidth: {
+			type: String,
+		},
+		maxWidth: {
+			type: String,
+		},
+		height: {
+			type: String,
+		},
+		minHeight: {
+			type: String,
+		},
+		maxHeight: {
+			type: String,
+		},
+		value: {
+			type: [String || Number],
+		},
+		activeClass: {
+			type: String,
+		},
+		exact: {
+			type: Boolean,
+		},
+		exactActiveClass: {
+			type: String,
+		},
+		exactPath: {
+			type: Boolean,
+		},
+		absolute: {
+			type: Boolean,
+		},
+		append: {
+			// append link
+			type: Boolean,
+		},
+		bottom: {
+			type: Boolean,
+		},
+		fixed: {
+			type: Boolean,
+		},
+		inputValue: {
+			type: [String || Number || Object || Array],
+		},
+		left: {
+			type: Boolean,
+		},
+		right: {
+			type: Boolean,
+		},
+		link: {
+			type: Boolean,
+		},
+		nuxt: {
+			// use vue router || use Spa
+			type: Boolean,
+		},
+		plain: {
+			// remove background color in hover
+			type: Boolean,
+		},
 	},
-    methods : {
-        handleClick(){
-            this.$emit('click')
-        }
-    }
+	methods: {
+		handleClick() {
+			this.$emit('click')
+		},
+	},
 }
 </script>
-<style></style>
+
