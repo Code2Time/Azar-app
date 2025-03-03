@@ -3,6 +3,7 @@ export default {
 		Home: 'Home',
 		Login: 'Login',
 		Toggle_Info: 'Toggle Btn Is Disable',
+		Select : 'Select'
 	},
 	LoginBox: {
 		Sign_Up: 'sign up',

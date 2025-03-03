@@ -3,6 +3,7 @@ export default {
 		Home: 'خانه',
 		Login: 'ورود',
 		Toggle_Info: 'دکمه غیر فعاله',
+		Select : 'انتخاب'
 	},
 	LoginBox: {
 		Ask_Account: 'حساب کاربری ندارید؟',

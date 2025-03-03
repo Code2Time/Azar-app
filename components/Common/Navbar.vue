@@ -7,13 +7,19 @@
 					<div class="mx-2">
 						<nuxt-link class="link white--text poppins-2" to="/" exact>
 							<v-icon color="white">mdi-home</v-icon>
-							<span>{{$t('Headers.Home')}}</span>
+							<span>{{ $t('Headers.Home') }}</span>
 						</nuxt-link>
 					</div>
 					<div class="mx-2">
 						<nuxt-link class="link white--text poppins-2" to="/login" exact>
 							<v-icon color="white">mdi-account</v-icon>
 							<span>{{ $t('Headers.Login') }}</span>
+						</nuxt-link>
+					</div>
+					<div class="mx-2">
+						<nuxt-link class="link white--text poppins-2" to="/select" exact>
+							<v-icon color="white">mdi-plus-minus-variant</v-icon>
+							<span>{{ $t('Headers.Select') }}</span>
 						</nuxt-link>
 					</div>
 				</div>
