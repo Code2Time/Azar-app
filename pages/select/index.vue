@@ -1,7 +1,13 @@
 <template>
 	<div class="main-container">
 		<div class="select-container">
-			<Select :fullWidth="false" label="Select an option" />
+			<Select
+				danse
+				outlined
+				label="Select an option"
+				:items="options"
+				v-model="selected_value"
+			/>
 		</div>
 	</div>
 </template>
@@ -13,6 +19,17 @@ export default {
 	components: {
 		Select,
 	},
+	data() {
+		return {
+			options: [
+				{ text: 'option1', value: 1 },
+				{ text: 'option2', value: 2 },
+				{ text: 'option3', value: 3 },
+				{ text: 'option4', value: 4 },
+			],
+			selected_value: '',
+		}
+	},
 }
 </script>
 <style>
@@ -23,7 +40,6 @@ export default {
 .select-container {
 	width: 50%;
 	height: 50%;
-	border: 1px solid rgba(255, 0, 0, 0.323);
 	margin: 50px auto;
 }
 </style>

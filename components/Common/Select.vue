@@ -67,7 +67,6 @@
 		:dark="dark"
 		:solo="solo"
 		:flat="flat"
-		:id="id"
 	></v-select>
 </template>
 
@@ -78,15 +77,15 @@ export default {
 		items: {
 			type: Array,
 			required: true,
-			validator: (value) => Array.isArray(value) && value.length > 0,
 		},
 		label: {
 			type: String,
-			default: '',
+		},
+		chips: {
+			type: Boolean,
 		},
 		value: {
 			type: [String, Number, Array, Object],
-			default: '',
 		},
 		rules: {
 			type: Array,
@@ -140,9 +139,6 @@ export default {
 		},
 		deletableChips: {
 			type: Boolean,
-		},
-		id: {
-			type: String,
 		},
 		itemColor: {
 			type: String,
@@ -262,11 +258,9 @@ export default {
 		},
 		itemText: {
 			type: String,
-			default: 'text',
 		},
 		itemValue: {
 			type: String,
-			default: 'value',
 		},
 		cacheItems: {
 			type: Boolean,
@@ -278,7 +272,6 @@ export default {
 		},
 		noDataText: {
 			type: String,
-			default: 'No data available',
 		},
 		openOnClear: {
 			type: Boolean,
