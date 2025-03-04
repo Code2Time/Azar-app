@@ -17,7 +17,7 @@
 						</nuxt-link>
 					</div>
 					<div class="mx-2">
-						<nuxt-link class="link white--text poppins-2" to="/select" exact>
+						<nuxt-link class="link white--text poppins-2" to="/more-component" exact>
 							<v-icon color="white">mdi-plus-minus-variant</v-icon>
 							<span>{{ $t('Headers.Select') }}</span>
 						</nuxt-link>

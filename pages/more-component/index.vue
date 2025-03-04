@@ -1,12 +1,19 @@
 <template>
 	<div class="main-container">
-		<div class="select-container">
+		<div class="select-container d-flex flex-column">
 			<Select
 				danse
 				outlined
 				label="Select an option"
 				:items="options"
-				v-model="selected_value"
+				v-model="selected_value1"
+			/>
+			<Autocompletes
+				:items="options"
+				label="search for a option"
+				v-model="selected_value2"
+				outlined
+				dense
 			/>
 		</div>
 	</div>
@@ -14,10 +21,12 @@
 <script>
 // import component
 import Select from '~/components/Common/Select.vue'
+import Autocompletes from '~/components/Common/Autocomplate.vue'
 export default {
 	name: 'SelectPage',
 	components: {
 		Select,
+		Autocompletes,
 	},
 	data() {
 		return {
@@ -27,7 +36,9 @@ export default {
 				{ text: 'option3', value: 3 },
 				{ text: 'option4', value: 4 },
 			],
-			selected_value: '',
+
+			selected_value1: '',
+			selected_value1: '',
 		}
 	},
 }
