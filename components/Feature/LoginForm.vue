@@ -20,11 +20,11 @@
 									<v-col col="12" sm="9" md="6" align-self="center">
 										<Input
 											:label="$t('LoginBox.Email_Id')"
+											customColor="blue"
 											append-icon="mdi-account"
 											rules="require , email"
 											v-model="user_name"
 											:value="user_name"
-											color="primary"
 											type="email"
 											dir="ltr"
 										/>
@@ -32,24 +32,16 @@
 									<v-col cols="12" sm="9" md="6" align-self="center">
 										<Input
 											:label="$t('LoginBox.Password')"
+											customColor="blue"
 											rules="require"
 											v-model="password"
 											:value="password"
 											type="password"
-											color="primary"
 											dir="ltr"
 										/>
 									</v-col>
 									<!-- number input type test -->
-									<v-col cols="12" align-self="center">
-										<span class="red--text">this input just for test</span>
-										<Input
-											type="text"
-											label="your number"
-											:value="number"
-											v-model="formattedNumber"
-										/>
-									</v-col>
+
 									<v-col cols="12">
 										<div class="d-flex align-center justify-space-between">
 											<v-checkbox
@@ -75,7 +67,6 @@
 							:disabled="isDisable"
 							@click="Submited"
 							:rounded="true"
-							color="blue"
 							width="60%"
 						/>
 
@@ -130,14 +121,6 @@ export default {
 	computed: {
 		isDisable() {
 			return this.user_name.trim() === '' || this.password.trim() === ''
-		},
-		formattedNumber: {
-			get() {
-				return this.number ? Number(this.number).toLocaleString() : ''
-			},
-			set(value) {
-				this.number = value.replace(/,/g, '')
-			},
 		},
 	},
 }

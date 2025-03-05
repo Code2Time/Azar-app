@@ -1,32 +1,68 @@
 <template>
 	<div class="main-container">
-		<div class="select-container d-flex flex-column">
-			<Select
-				danse
-				outlined
-				label="Select an option"
-				:items="options"
-				v-model="selected_value1"
-			/>
-			<Autocompletes
-				:items="options"
-				label="search for a option"
-				v-model="selected_value2"
-				outlined
-				dense
-			/>
-		</div>
+		<v-container>
+			<v-row>
+				<v-col cols="6" align-self="center">
+					<span class="ma-2 red--text"> a simple Select Component </span>
+					<Select
+						danse
+						outlined
+						label="Select an option"
+						:items="options"
+						v-model="selected_value1"
+					/>
+				</v-col>
+				<v-col cols="6" align-self="center">
+					<span class="red--text">this input just for test</span>
+					<Input
+						type="text"
+						label="your number"
+						:value="number"
+						v-model="formattedNumber"
+					/>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col cols="6">
+					<span class="ma-2 red--text"> a simple AutoComplate Component </span>
+					<Autocompletes
+						:items="options"
+						label="search for a option"
+						v-model="selected_value2"
+						outlined
+						dense
+					/>
+				</v-col>
+			</v-row>
+		</v-container>
+		<v-divider />
+		<v-container>
+			<v-row>
+				<v-col cols="12" align-self="center">
+					<Button value="get data" @click="fetchData" />
+				</v-col>
+				<v-col>
+					<ul class="d-flex ">
+						<li v-for="{id , index} in user_id" :key="index" class="mx-4">{{ id }}</li>
+					</ul>
+				</v-col>
+			</v-row>
+		</v-container>
 	</div>
 </template>
 <script>
 // import component
-import Select from '~/components/Common/Select.vue'
 import Autocompletes from '~/components/Common/Autocomplate.vue'
+import Select from '~/components/Common/Select.vue'
+import Button from '~/components/Common/Button.vue'
+import Input from '~/components/Common/Input.vue'
 export default {
 	name: 'SelectPage',
 	components: {
 		Select,
 		Autocompletes,
+		Input,
+		Button,
 	},
 	data() {
 		return {
@@ -36,10 +72,35 @@ export default {
 				{ text: 'option3', value: 3 },
 				{ text: 'option4', value: 4 },
 			],
-
+			number: '',
 			selected_value1: '',
-			selected_value1: '',
+			selected_value2: '',
+			user_id : null
 		}
+	},
+	methods: {
+		async fetchData() {
+			try {
+				const response = await this.$apiRequest(
+					'photos?_start=0&_limit=20',
+					{},
+					'get'
+				)
+				this.user_id = response.data
+			} catch (error) {
+				console.error('Failed to fetch data:', error)
+			}
+		},
+	},
+	computed: {
+		formattedNumber: {
+			get() {
+				return this.number ? Number(this.number).toLocaleString() : ''
+			},
+			set(value) {
+				this.number = value.replace(/,/g, '')
+			},
+		},
 	},
 }
 </script>

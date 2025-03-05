@@ -1,6 +1,7 @@
 <template>
 	<v-text-field
 		@click:append="togglePasswordVisibility"
+		:style="{Color : customColor}"
 		:background-color="backgroundColor"
 		:validate-on-blur="validateOnBlur"
 		:persistent-hint="persistentHint"
@@ -43,6 +44,10 @@ export default {
 		// rules for input validate
 		rules: {
 			type: String,
+		},
+		customColor :{
+			type : String,
+			default : 'primary'
 		},
 		label: {
 			type: String,

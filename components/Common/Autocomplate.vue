@@ -109,6 +109,7 @@ export default {
 		}, // آیا فیلد قابل پاک کردن باشد؟
 		color: {
 			type: String,
+			default : 'primary'
 		}, // رنگ اصلی فیلد
 		counter: {
 			type: [Boolean, Number, String],
