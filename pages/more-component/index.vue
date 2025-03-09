@@ -42,8 +42,10 @@
 					<Button value="get data" @click="fetchData" />
 				</v-col>
 				<v-col>
-					<ul class="d-flex ">
-						<li v-for="{id , index} in user_id" :key="index" class="mx-4">{{ id }}</li>
+					<ul class="d-flex">
+						<li v-for="{ id, index } in user_id" :key="index" class="mx-4">
+							{{ id }}
+						</li>
 					</ul>
 				</v-col>
 			</v-row>
@@ -75,7 +77,7 @@ export default {
 			number: '',
 			selected_value1: '',
 			selected_value2: '',
-			user_id : null
+			user_id: null,
 		}
 	},
 	methods: {
