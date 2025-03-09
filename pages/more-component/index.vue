@@ -58,6 +58,8 @@ import Autocompletes from '~/components/Common/Autocomplate.vue'
 import Select from '~/components/Common/Select.vue'
 import Button from '~/components/Common/Button.vue'
 import Input from '~/components/Common/Input.vue'
+// import isAuthenticated 
+import { isAuthenticated } from '~/utils/auth'
 export default {
 	name: 'SelectPage',
 	components: {
@@ -104,6 +106,11 @@ export default {
 			},
 		},
 	},
+	mounted(){
+		if(!isAuthenticated()){
+			this.$router.push('/login')
+		}
+	}
 }
 </script>
 <style>

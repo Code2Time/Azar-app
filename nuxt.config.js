@@ -1,4 +1,4 @@
-import i18nConfig from "./config/i18nConfig";
+import i18nConfig from './config/i18nConfig'
 
 export default {
 	// Global page headers: https://go.nuxtjs.dev/config-head
@@ -27,7 +27,12 @@ export default {
 	css: ['@/dist/Styles/globalClass.css'],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-	plugins: ['~/plugins/vuetify.js' , '~/plugins/validationRules.js' , '~/plugins/axios.js'],
+	plugins: [
+		'~/plugins/vuetify.js',
+		'~/plugins/validationRules.js',
+		'~/plugins/axios.js',
+		'~/plugins/token.js',
+	],
 
 	i18n: i18nConfig,
 
@@ -41,10 +46,8 @@ export default {
 	],
 
 	// Modules: https://go.nuxtjs.dev/config-modules
-	modules: ['nuxt-i18n', 'cookie-universal-nuxt' , '@nuxtjs/axios'],
-	axios :{
-
-	},
+	modules: ['nuxt-i18n', 'cookie-universal-nuxt', '@nuxtjs/axios'],
+	axios: {},
 
 	// Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
 

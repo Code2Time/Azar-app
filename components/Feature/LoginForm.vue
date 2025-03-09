@@ -108,12 +108,18 @@ export default {
 		return {
 			user_name: '',
 			password: '',
-			number: '',
+			token: '',
 		}
 	},
 	methods: {
 		Submited() {
-			console.log(this.user_name, this.password)
+			if (this.user_name === 'admin' && this.password === '123') {
+				this.token = this.$generateRandomToken(32)
+				localStorage.setItem('authToken', this.token)
+				this.$router.push('/more-component')
+			} else {
+				alert(this.$i18n.t('LoginBox.Wrong_user_pass'))
+			}
 			this.user_name = ''
 			this.password = ''
 		},
