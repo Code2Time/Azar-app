@@ -21,7 +21,8 @@ export default {
 		Empty_Input : 'please fill out this field',
 		Input_Error_Username : 'Incorrect username',
 		Input_Error_Password : 'Incorrect password',
-		Wrong_user_pass : 'The password or username is incorrect.'
+		Wrong_user_pass : 'The password or username is incorrect.',
+		Success_Login :'success Login'
 	},
 	HomePage: {
 		HomeTitle: 'Home Page ! this color is a test',

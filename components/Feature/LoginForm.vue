@@ -117,8 +117,15 @@ export default {
 				this.token = this.$generateRandomToken(32)
 				localStorage.setItem('authToken', this.token)
 				this.$router.push('/more-component')
+				this.$toast.success(this.$i18n.t('LoginBox.Success_Login'), {
+					position: 'bottom',
+					duration: '2000',
+				})
 			} else {
-				alert(this.$i18n.t('LoginBox.Wrong_user_pass'))
+				this.$toast.error(this.$i18n.t('LoginBox.Wrong_user_pass'), {
+					position: 'top',
+					duration: '2000',
+				})
 			}
 			this.user_name = ''
 			this.password = ''
