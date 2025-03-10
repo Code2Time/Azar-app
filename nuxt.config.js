@@ -32,6 +32,7 @@ export default {
 		'~/plugins/validationRules.js',
 		'~/plugins/axios.js',
 		'~/plugins/token.js',
+		'~/plugins/vue-toast.js',
 	],
 
 	i18n: i18nConfig,

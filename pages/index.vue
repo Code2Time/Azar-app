@@ -31,11 +31,18 @@ export default {
 			return this.num.toLocaleString()
 		},
 	},
-	methods :{
-		customClick(){
+	methods: {
+		customClick() {
 			alert('custome clicked')
-		}
-	}
+		},
+	},
+	mounted() {
+		this.$toast.info(this.$t('HomePage.User_Pass'), {
+			position: 'bottom',
+			duration: '3000',
+
+		})
+	},
 }
 </script>
 

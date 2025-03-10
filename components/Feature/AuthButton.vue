@@ -17,10 +17,11 @@ export default {
 	},
 	computed: {
 		buttonText() {
-			return this.isLoggedIn ? this.$i18n.t('Headers.Logout') : this.$i18n.t('Headers.Login') 
+			return this.isLoggedIn
+				? this.$i18n.t('Headers.Logout')
+				: this.$i18n.t('Headers.Login')
 		},
 		mounted() {
-			// وضعیت لاگین فقط در سمت کلاینت بررسی شود
 			if (process.client) {
 				this.isLoggedIn = isAuthenticated()
 			}

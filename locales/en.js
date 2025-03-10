@@ -26,5 +26,6 @@ export default {
 	HomePage: {
 		HomeTitle: 'Home Page ! this color is a test',
 		Home_Discription: 'ther is noting for show yet',
+		User_Pass : 'user : admin , pass : 123'
 	},
 }

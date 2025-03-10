@@ -1,5 +1,5 @@
 export function isAuthenticated() {
 	if (process.client) {
-		return !!localStorage.getItem('authToken') // بررسی وجود توکن
+		return !!localStorage.getItem('authToken') 
 	}
 }
