@@ -49,16 +49,22 @@
 					</ul>
 				</v-col>
 			</v-row>
+			<v-row>
+				<v-col>
+					<BaseTable :headers="headers" :items="items" />
+				</v-col>
+			</v-row>
 		</v-container>
 	</div>
 </template>
 <script>
 // import component
 import Autocompletes from '~/components/Common/Autocomplate.vue'
+import BaseTable from '~/components/Feature/BaseTable.vue'
 import Select from '~/components/Common/Select.vue'
 import Button from '~/components/Common/Button.vue'
 import Input from '~/components/Common/Input.vue'
-// import isAuthenticated 
+// import isAuthenticated
 import { isAuthenticated } from '~/utils/auth'
 export default {
 	name: 'SelectPage',
@@ -67,9 +73,20 @@ export default {
 		Autocompletes,
 		Input,
 		Button,
+		BaseTable,
 	},
 	data() {
 		return {
+			headers: [
+				{ text: 'نام', value: 'name' },
+				{ text: 'سن', value: 'age' },
+				{ text: 'شغل', value: 'job' },
+			],
+			items: [
+				{ name: 'علی', age: 25, job: 'برنامه‌نویس' },
+				{ name: 'رضا', age: 30, job: 'طراح' },
+				{ name: 'سارا', age: 28, job: 'مدیر پروژه' },
+			],
 			options: [
 				{ text: 'option1', value: 1 },
 				{ text: 'option2', value: 2 },
@@ -106,11 +123,11 @@ export default {
 			},
 		},
 	},
-	mounted(){
-		if(!isAuthenticated()){
+	mounted() {
+		if (!isAuthenticated()) {
 			this.$router.push('/login')
 		}
-	}
+	},
 }
 </script>
 <style>
