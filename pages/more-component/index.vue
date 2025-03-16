@@ -78,14 +78,13 @@ export default {
 	data() {
 		return {
 			headers: [
-				{ text: 'نام', value: 'name' },
-				{ text: 'سن', value: 'age' },
-				{ text: 'شغل', value: 'job' },
+				{ text: this.$t('LoginBox.User_Names'), value: 'username' },
+				{ text: this.$t('LoginBox.Passwords'), value: 'password' },
 			],
 			items: [
-				{ name: 'علی', age: 25, job: 'برنامه‌نویس' },
-				{ name: 'رضا', age: 30, job: 'طراح' },
-				{ name: 'سارا', age: 28, job: 'مدیر پروژه' },
+				{ username: 'user1', password: 'pass123' },
+				{ username: 'user2', password: 'pass456' },
+				{ username: 'user3', password: 'pass789' },
 			],
 			options: [
 				{ text: 'option1', value: 1 },

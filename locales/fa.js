@@ -22,7 +22,9 @@ export default {
 		Input_Error_Username: 'ایمیل نامعتبر ',
 		Input_Error_Password: 'رمز عبور نامعتبر',
 		Wrong_user_pass: 'نام کاربری یا رمز عبور نا معتبر است',
-		Success_Login :'با موفقیت وارد شدید'
+		Success_Login: 'با موفقیت وارد شدید',
+		User_Names: 'نام کاربری',
+		Passwords: 'رمز عبور',
 	},
 	HomePage: {
 		HomeTitle: '!صفحه خانه و متنی برای تست رنگ',
