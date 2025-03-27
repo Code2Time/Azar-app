@@ -53,6 +53,10 @@ export default {
 					title: 'Axios Test',
 					to: { name: 'axios' },
 				},
+				{
+					title: 'Pagination',
+					to: { name: 'test' },
+				},
 			],
 		}
 	},

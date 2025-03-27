@@ -17,8 +17,7 @@
 </template>
 
 <script>
-// import some requirement
-import { isAuthenticated } from '~/utils/auth'
+// import Components
 import Button from '~/components/Common/Button.vue'
 
 export default {
@@ -49,11 +48,6 @@ export default {
 				this.loading = false
 			}
 		},
-	},
-	mounted() {
-		if (!isAuthenticated()) {
-			this.$router.push('/login')
-		}
 	},
 }
 </script>
