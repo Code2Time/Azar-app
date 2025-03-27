@@ -55,7 +55,7 @@ export default {
 				},
 				{
 					title: 'Pagination',
-					to: { name: 'test' },
+					to: { name: 'pagination' },
 				},
 			],
 		}

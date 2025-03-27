@@ -42,6 +42,7 @@ export default {
 				this.loading = true
 				const response = await this.$apiRequest('users', {}, 'get')
 				this.users = response.data
+				console.log(this.users)
 			} catch (error) {
 				console.error('Failed to fetch data:', error)
 			} finally {

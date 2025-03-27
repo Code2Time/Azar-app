@@ -17,7 +17,7 @@ export default function ({ $axios }, inject) {
 		return Promise.reject(error)
 	})
 
-	const apiRequest = (url, config = {}, method = 'post') => {
+	const apiRequest = (url, config = {}, method = 'post' ,customBaseURL = null) => {
 		const { params, data, headers } = config
 
 		// تنظیم نوع درخواست
@@ -38,6 +38,7 @@ export default function ({ $axios }, inject) {
 			params,
 			data,
 			headers,
+			baseURL: customBaseURL || undefined
 		}
 
 		return $axios(requestConfig)
