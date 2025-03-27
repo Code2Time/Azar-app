@@ -37,6 +37,7 @@
 											v-model="password"
 											:value="password"
 											type="password"
+											@enter="Submited"
 											dir="ltr"
 										/>
 									</v-col>

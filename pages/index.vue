@@ -5,16 +5,11 @@
 				{{ $t('HomePage.HomeTitle') }}
 			</h1>
 			<h3 class="poppins-2">{{ $t('HomePage.Home_Discription') }}</h3>
-			<div class="d-flex flex-column justify-center align-center pa-3">
-				<Button value="Test Btn" @click="customClick" />
-			</div>
 		</div>
 	</v-app>
 </template>
 
 <script>
-import Button from '~/components/Common/Button.vue'
-
 export default {
 	name: 'IndexPage',
 	data() {
@@ -22,10 +17,6 @@ export default {
 			num: 100215454,
 		}
 	},
-	components: {
-		Button,
-	},
-
 	computed: {
 		number() {
 			return this.num.toLocaleString()
@@ -40,7 +31,6 @@ export default {
 		this.$toast.info(this.$t('HomePage.User_Pass'), {
 			position: 'bottom',
 			duration: '3000',
-
 		})
 	},
 }

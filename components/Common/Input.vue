@@ -1,7 +1,8 @@
 <template>
 	<v-text-field
 		@click:append="togglePasswordVisibility"
-		:style="{Color : customColor}"
+		@keypress.enter="handleEnter"
+		:style="{ Color: customColor }"
 		:background-color="backgroundColor"
 		:validate-on-blur="validateOnBlur"
 		:persistent-hint="persistentHint"
@@ -45,9 +46,9 @@ export default {
 		rules: {
 			type: String,
 		},
-		customColor :{
-			type : String,
-			default : 'primary'
+		customColor: {
+			type: String,
+			default: 'primary',
 		},
 		label: {
 			type: String,
@@ -202,6 +203,9 @@ export default {
 	methods: {
 		togglePasswordVisibility() {
 			this.show_password = !this.show_password
+		},
+		handleEnter(event) {
+			this.$emit('enter', event)
 		},
 	},
 	computed: {

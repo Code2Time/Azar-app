@@ -14,6 +14,7 @@
 		:disabled="disabled"
 		:outlined="outlined"
 		@click="handleClick"
+		@keypress.enter="handleEnter"
 		:rounded="rounded"
 		:loading="loading"
 		:x-large="Xlarge"
@@ -189,7 +190,9 @@ export default {
 		handleClick() {
 			this.$emit('click')
 		},
+		handleEnter(event) {
+			this.$emit('enter', event)
+		},
 	},
 }
 </script>
-

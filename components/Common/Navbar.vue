@@ -11,14 +11,11 @@
 						</nuxt-link>
 					</div>
 					<div class="mx-2">
-						<nuxt-link
-							class="link white--text poppins-2"
-							to="/more-component"
-							exact
-						>
-							<v-icon color="white">mdi-plus-minus-variant</v-icon>
-							<span>{{ $t('Headers.Select') }}</span>
-						</nuxt-link>
+						<Menu
+							:items="menuItems"
+							activator-text="More Pages"
+							:activator-props="{ color: 'primary', dark: true }"
+						/>
 					</div>
 				</div>
 			</div>
@@ -36,12 +33,28 @@
 // import ToggleThemeBtn from '../Feature/ToggleThemeBtn.vue'
 import AuthButton from '../Feature/AuthButton.vue'
 import LanguageBtn from '../Feature/LanguageBtn.vue'
+import Menu from '~/components/Common/Menu.vue'
 
 export default {
 	components: {
 		// ToggleThemeBtn,
 		LanguageBtn,
 		AuthButton,
+		Menu,
+	},
+	data() {
+		return {
+			menuItems: [
+				{
+					title: 'All Components',
+					to: { name: 'login' }, // استفاده از object route
+				},
+				{
+					title: 'Axios Test',
+					to: { name: 'axios' },
+				},
+			],
+		}
 	},
 }
 </script>

@@ -38,18 +38,6 @@
 		<v-divider />
 		<v-container>
 			<v-row>
-				<v-col cols="12" align-self="center">
-					<Button value="get data" @click="fetchData" />
-				</v-col>
-				<v-col>
-					<ul class="d-flex">
-						<li v-for="{ id, index } in user_id" :key="index" class="mx-4">
-							{{ id }}
-						</li>
-					</ul>
-				</v-col>
-			</v-row>
-			<v-row>
 				<v-col>
 					<BaseTable :headers="headers" :items="items" />
 				</v-col>
@@ -62,7 +50,6 @@
 import Autocompletes from '~/components/Common/Autocomplate.vue'
 import BaseTable from '~/components/Feature/BaseTable.vue'
 import Select from '~/components/Common/Select.vue'
-import Button from '~/components/Common/Button.vue'
 import Input from '~/components/Common/Input.vue'
 // import isAuthenticated
 import { isAuthenticated } from '~/utils/auth'
@@ -72,7 +59,6 @@ export default {
 		Select,
 		Autocompletes,
 		Input,
-		Button,
 		BaseTable,
 	},
 	data() {
@@ -97,20 +83,6 @@ export default {
 			selected_value2: '',
 			user_id: null,
 		}
-	},
-	methods: {
-		async fetchData() {
-			try {
-				const response = await this.$apiRequest(
-					'photos?_start=0&_limit=20',
-					{},
-					'get'
-				)
-				this.user_id = response.data
-			} catch (error) {
-				console.error('Failed to fetch data:', error)
-			}
-		},
 	},
 	computed: {
 		formattedNumber: {
