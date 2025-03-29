@@ -1,54 +1,20 @@
 export default function ({ $axios }, inject) {
-	$axios.setBaseURL('https://jsonplaceholder.typicode.com/')
-
-	$axios.onRequest((config) => {
-		return config
-	})
-
-	$axios.onResponse((response) => {
-		return response
-	})
-
-	$axios.onError((error) => {
-		const code = parseInt(error.response && error.response.status)
-		if (code === 404) {
-			console.error('404 - Not Found')
-		}
-		return Promise.reject(error)
-	})
-
-	const apiRequest = (url, config = {}, method = 'post' ,customBaseURL = null) => {
-		const { params, data, headers } = config
-
-		// تنظیم نوع درخواست
-		let requestMethod = 'post' // پیش‌فرض
-		if (method.toLowerCase() === 'get') {
-			requestMethod = 'get'
-		} else if (method.toLowerCase() === 'put') {
-			requestMethod = 'put'
-		} else if (method.toLowerCase() === 'delete') {
-			requestMethod = 'delete'
-		} else if (method.toLowerCase() === 'patch') {
-			requestMethod = 'patch'
-		}
-
+	const apiRequest = async (url, config = {}, method = 'get', customBaseURL = null) => {
+	  try {
 		const requestConfig = {
-			url,
-			method: requestMethod, // استفاده از نوع درخواست بررسی‌شده
-			params,
-			data,
-			headers,
-			baseURL: customBaseURL || undefined
+		  url,
+		  method: method.toLowerCase(),
+		  ...config,
+		  baseURL: customBaseURL || 'https://randomuser.me/api/'
 		}
-
-		return $axios(requestConfig)
-			.then((response) => response)
-			.catch((error) => {
-				console.error('API Request Error:', error)
-				throw error
-			})
+  
+		const response = await $axios(requestConfig)
+		return response.data || {}
+	  } catch (error) {
+		console.error('API Request Error:', error)
+		throw error
+	  }
 	}
-
-	inject('axios', $axios)
+  
 	inject('apiRequest', apiRequest)
-}
+  }

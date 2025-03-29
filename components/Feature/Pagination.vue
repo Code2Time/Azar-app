@@ -20,6 +20,7 @@
 	props: {
 	  value: {
 		type: Number,
+		default: 1
 	  },
 	  totalItems: {
 		type: Number,
@@ -54,7 +55,7 @@
   
 	computed: {
 	  totalPages() {
-		return Math.ceil(this.totalItems / this.itemsPerPage)
+		return Math.max(1, Math.ceil(this.totalItems / this.itemsPerPage))
 	  },
 	  internalPage: {
 		get() {

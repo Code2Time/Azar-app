@@ -36,5 +36,10 @@ export default {
 	},
 	Buttons: {
 		Get_Data: 'دریافت داده',
+		Search_Users: 'جستجو کاربر',
+	},
+	Gender: {
+		Female: 'زن',
+		Male: 'مرد',
 	},
 }

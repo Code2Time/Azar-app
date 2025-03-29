@@ -35,6 +35,12 @@ export default {
 		User_Pass: 'user : admin , pass : 123',
 	},
 	Buttons : {
-		Get_Data : 'Get Data'
+		Get_Data : 'Get Data',
+		Search_Users : 'Search Users'
+	},
+	Gender : {
+		Female : 'Female',
+		Male  : 'Male',
+
 	}
 }
