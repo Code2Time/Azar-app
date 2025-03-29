@@ -1,6 +1,6 @@
 <template>
 	<div class="data-container d-flex align-center justify-space-around">
-		<Button value="get data" @click="fetchData" />
+		<Button :value="this.$i18n.t('Buttons.Get_Data')" @click="fetchData" />
 		<v-progress-circular
 			v-if="loading"
 			indeterminate
@@ -8,7 +8,7 @@
 			class="mt-4"
 		></v-progress-circular>
 		<ul v-else class="d-flex flex-column align-center justify-center">
-			<h1 v-if="users">sorte users (a-z)</h1>
+			<h1 v-if="users">sort users (a-z)</h1>
 			<li v-for="(user, index) in sortedUsers" :key="index" class="ma-4">
 				{{ user.name }} - {{ user.email }} (ID: {{ user.id }})
 			</li>

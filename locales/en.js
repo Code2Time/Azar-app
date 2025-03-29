@@ -34,4 +34,7 @@ export default {
 		HomeTitle: 'Home Page ! this color is a test',
 		User_Pass: 'user : admin , pass : 123',
 	},
+	Buttons : {
+		Get_Data : 'Get Data'
+	}
 }

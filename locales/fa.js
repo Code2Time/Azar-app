@@ -34,4 +34,7 @@ export default {
 		User_Pass: 'نام کاربری : admin , رمز عبور‌ : 123',
 		HomeTitle: '!صفحه خانه و متنی برای تست رنگ',
 	},
+	Buttons: {
+		Get_Data: 'دریافت داده',
+	},
 }
