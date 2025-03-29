@@ -13,7 +13,7 @@
 					<div class="mx-2">
 						<Menu
 							:items="menuItems"
-							activator-text="More Pages"
+							:activator-text="$t('Headers.Select')"
 							:activator-props="{ color: 'primary', dark: true }"
 						/>
 					</div>
@@ -31,8 +31,8 @@
 <script>
 // import component
 // import ToggleThemeBtn from '../Feature/ToggleThemeBtn.vue'
-import AuthButton from '../Feature/AuthButton.vue'
 import LanguageBtn from '../Feature/LanguageBtn.vue'
+import AuthButton from '../Feature/AuthButton.vue'
 import Menu from '~/components/Common/Menu.vue'
 
 export default {
@@ -46,15 +46,15 @@ export default {
 		return {
 			menuItems: [
 				{
-					title: 'All Components',
+					title: this.$i18n.t('Headers.Custom_Component'),
 					to: { name: 'login' }, // استفاده از object route
 				},
 				{
-					title: 'Axios Test',
+					title: this.$i18n.t('Headers.Axios'),
 					to: { name: 'axios' },
 				},
 				{
-					title: 'Pagination',
+					title: this.$i18n.t('Headers.Pagination'),
 					to: { name: 'pagination' },
 				},
 			],
