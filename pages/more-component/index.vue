@@ -48,7 +48,7 @@
 <script>
 // import component
 import Autocompletes from '~/components/Common/Autocomplate.vue'
-import BaseTable from '~/components/Feature/BaseTable.vue'
+import BaseTable from '~/components/Base_Table/BaseTable.vue'
 import Select from '~/components/Common/Select.vue'
 import Input from '~/components/Common/Input.vue'
 // import isAuthenticated

@@ -34,5 +34,4 @@
   </script>
   
   <style scoped>
-  /* استایل های مربوط به Footer در اینجا */
   </style>

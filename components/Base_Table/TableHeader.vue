@@ -19,5 +19,5 @@ export default {
 </script>
 
 <style scoped>
-/* استایل های مربوط به Header در اینجا */
+
 </style>

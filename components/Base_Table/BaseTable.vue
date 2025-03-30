@@ -9,6 +9,7 @@
 </template>
 
 <script>
+// import components 
 import TableHeader from '~/components/Base_Table/TableHeader.vue';
 import TableItems from '~/components/Base_Table/TableItems.vue';
 import TableFooter from '~/components/Base_Table/TableFooter.vue';

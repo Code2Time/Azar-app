@@ -24,5 +24,4 @@
   </script>
   
   <style scoped>
-  /* استایل های مربوط به Items در اینجا */
   </style>

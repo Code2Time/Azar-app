@@ -120,12 +120,12 @@ export default {
 				this.$router.push('/more-component')
 				this.$toast.success(this.$i18n.t('LoginBox.Success_Login'), {
 					position: 'bottom',
-					duration: '2000',
+					duration: 2000,
 				})
 			} else {
 				this.$toast.error(this.$i18n.t('LoginBox.Wrong_user_pass'), {
-					position: 'top',
-					duration: '2000',
+					position: 'bottom',
+					duration: 2000,
 				})
 			}
 			this.user_name = ''
