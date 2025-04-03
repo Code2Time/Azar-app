@@ -47,16 +47,16 @@ export default {
 			menuItems: [
 				{
 					title: this.$i18n.t('Headers.Custom_Component'),
-					to: { name: 'login' }, // استفاده از object route
+					to: { name: 'more-component' }, // استفاده از object route
 				},
-				{
-					title: this.$i18n.t('Headers.Axios'),
-					to: { name: 'axios' },
-				},
-				{
-					title: this.$i18n.t('Headers.Pagination'),
-					to: { name: 'pagination' },
-				},
+				// {
+				// 	title: this.$i18n.t('Headers.Axios'),
+				// 	to: { name: 'axios' },
+				// },
+				// {
+				// 	title: this.$i18n.t('Headers.Pagination'),
+				// 	to: { name: 'pagination' },
+				// },
 			],
 		}
 	},

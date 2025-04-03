@@ -19,13 +19,13 @@
 								<v-row justify="center">
 									<v-col col="12" sm="9" md="6" align-self="center">
 										<Input
-											:label="$t('LoginBox.Email_Id')"
+											:label="$t('LoginBox.User_Id')"
 											customColor="blue"
 											append-icon="mdi-account"
-											rules="require , email"
+											rules="require , number"
 											v-model="user_name"
 											:value="user_name"
-											type="email"
+											type="text"
 											dir="ltr"
 										/>
 									</v-col>
@@ -113,23 +113,30 @@ export default {
 		}
 	},
 	methods: {
-		Submited() {
-			if (this.user_name === 'admin' && this.password === '123') {
-				this.token = this.$generateRandomToken(32)
-				localStorage.setItem('authToken', this.token)
-				this.$router.push('/more-component')
-				this.$toast.success(this.$i18n.t('LoginBox.Success_Login'), {
-					position: 'bottom',
-					duration: 2000,
-				})
-			} else {
-				this.$toast.error(this.$i18n.t('LoginBox.Wrong_user_pass'), {
-					position: 'bottom',
-					duration: 2000,
-				})
+		async Submited() {
+			const user_datas = {
+				username: this.user_name,
+				password: this.password,
 			}
-			this.user_name = ''
-			this.password = ''
+			try {
+				const user_req = await this.$api.post('/auth/login', user_datas)
+				if (user_req.status == 200) {
+					localStorage.setItem('authToken', user_req.data.Authorization)
+					this.$router.push('/')
+					console.log(user_req)
+				} else {
+					this.$toast.error('user pass is wrong', {
+						position: 'bottom',
+						duration: 3000,
+					})
+					this.user_name = ''
+					this.password = ''
+				}
+				return user_req
+			} catch (error) {
+				console.error('Error creating post:', error)
+				throw error
+			}
 		},
 	},
 	computed: {

@@ -102,7 +102,7 @@ export default {
 			},
 		},
 	},
-	mounted() {
+	created() {
 		if (!isAuthenticated()) {
 			this.$router.push('/login')
 		}

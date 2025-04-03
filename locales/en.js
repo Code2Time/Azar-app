@@ -19,7 +19,7 @@ export default {
 		Forget_Pass: 'forget password?',
 		Success_Login: 'success Login',
 		Password: 'Your Password',
-		Email_Id: 'Your Email Id',
+		User_Id: 'Your Phone Number',
 		User_Names: 'Usernames',
 		Remember: 'Remember me',
 		Passwords: 'Passwords',
@@ -32,7 +32,7 @@ export default {
 	HomePage: {
 		Home_Discription: 'ther is noting for show yet',
 		HomeTitle: 'Home Page ! this color is a test',
-		User_Pass: 'user : admin , pass : 123',
+		User_Pass: 'user : 09111111111 , pass : 123456',
 	},
 	Buttons : {
 		Get_Data : 'Get Data',

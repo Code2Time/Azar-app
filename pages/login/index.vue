@@ -14,6 +14,12 @@ export default {
 	components: {
 		LoginForm,
 	},
+	mounted() {
+		this.$toast.info(this.$t('HomePage.User_Pass'), {
+			position: 'bottom',
+			duration: 5000,
+		})
+	},
 }
 </script>
 

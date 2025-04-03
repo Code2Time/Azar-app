@@ -27,12 +27,6 @@ export default {
 			alert('custome clicked')
 		},
 	},
-	mounted() {
-		this.$toast.info(this.$t('HomePage.User_Pass'), {
-			position: 'bottom',
-			duration: '3000',
-		})
-	},
 }
 </script>
 

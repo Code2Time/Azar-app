@@ -21,7 +21,7 @@ export default {
 		Remember: 'منو بخاطر بسپار',
 		User_Names: 'نام کاربری',
 		Sign_Up: 'ساخت حساب',
-		Email_Id: 'آدرس ایمیل',
+		User_Id: 'شماره تلفن',
 		Email_Hint: 'تست۱ ',
 		Passwords: 'رمز عبور',
 		Password: 'رمز ورود',
@@ -31,7 +31,7 @@ export default {
 	},
 	HomePage: {
 		Home_Discription: 'فعلا چیزی برای نمایش وجود نداره!',
-		User_Pass: 'نام کاربری : admin , رمز عبور‌ : 123',
+		User_Pass: 'نام کاربری : 09111111111 , رمز عبور‌ : 123456',
 		HomeTitle: '!صفحه خانه و متنی برای تست رنگ',
 	},
 	Buttons: {

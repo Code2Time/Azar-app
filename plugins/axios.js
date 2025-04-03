@@ -10,15 +10,11 @@ export default function ({ $axios, store, redirect }, inject) {
 		},
 	})
 
-	// افزودن interceptor برای درخواست‌ها
 	api.onRequest((config) => {
-		// افزودن توکن احراز هویت اگر وجود دارد
-
 		// لاگ درخواست در حالت توسعه
 		if (process.env.NODE_ENV === 'development') {
 			console.log(`Making request to ${config.url}`)
 		}
-
 		return config
 	})
 
