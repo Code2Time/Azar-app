@@ -1,27 +1,35 @@
 <template>
-    <tbody>
-      <tr v-for="item in items" :key="item.id">
-        <td v-for="header in headers" :key="header.value">
-          {{ item[header.value] }}
-        </td>
-      </tr>
-    </tbody>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      items: {
-        type: Array,
-        required: true
-      },
-      headers: {
-        type: Array,
-        required: true
-      }
-    }
-  }
-  </script>
-  
-  <style scoped>
-  </style>
+  <v-data-table
+    :headers="headers"
+    :items="items"
+    :loading="loading"
+    hide-default-footer
+    disable-pagination
+  >
+    <template #[`item.avatar`]="{ item }">
+      <v-avatar size="36">
+        <img :src="item.avatar" :alt="item.name" />
+      </v-avatar>
+    </template>
+  </v-data-table>
+</template>
+
+<script>
+export default {
+  name: 'TableItems',
+  props: {
+    headers: {
+      type: Array,
+      required: true,
+    },
+    items: {
+      type: Array,
+      required: true,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+  },
+}
+</script>

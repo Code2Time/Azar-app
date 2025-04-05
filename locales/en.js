@@ -43,4 +43,11 @@ export default {
 		Female: 'Female',
 		Male: 'Male',
 	},
+	Base_Table : {
+		Avatar : 'Avatar',
+		Search : 'Search...',
+		First_Name : 'First Name',
+		Last_Name : 'Last Name',
+		Phone_Number : 'Phone Number'
+	}
 }

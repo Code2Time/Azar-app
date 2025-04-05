@@ -1,37 +1,42 @@
 <template>
-    <tfoot>
-      <tr>
-        <td colspan="headers.length">
-          <v-pagination
-            v-model="page"
-            :length="pageCount"
-            :total-visible="5"
-            @input="onPageChange"
-          ></v-pagination>
-        </td>
-      </tr>
-    </tfoot>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      page: {
-        type: Number,
-        required: true
-      },
-      pageCount: {
-        type: Number,
-        required: true
-      }
+  <v-card-actions>
+    <v-spacer />
+    <v-pagination
+      v-model="page"
+      :length="totalPages"
+      :total-visible="7"
+      @input="handlePageChange"
+    />
+    <v-spacer />
+  </v-card-actions>
+</template>
+
+<script>
+export default {
+  name: 'TableFooter',
+  props: {
+    page: {
+      type: Number,
+      required: true,
     },
-    methods: {
-      onPageChange(newPage) {
-        this.$emit('page-change', newPage);
-      }
-    }
-  }
-  </script>
-  
-  <style scoped>
-  </style>
+    totalItems: {
+      type: Number,
+      required: true,
+    },
+    itemsPerPage: {
+      type: Number,
+      required: true,
+    },
+  },
+  computed: {
+    totalPages() {
+      return Math.ceil(this.totalItems / this.itemsPerPage)
+    },
+  },
+  methods: {
+    handlePageChange(page) {
+      this.$emit('update:page', page)
+    },
+  },
+}
+</script>

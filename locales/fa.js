@@ -43,4 +43,11 @@ export default {
 		Female: 'زن',
 		Male: 'مرد',
 	},
+	Base_Table: {
+		Phone_Number: 'تلفن همراه',
+		Last_Name: 'نام خانوادگی',
+		First_Name: 'نام',
+		Search: '...جستجو',
+		Avatar: 'آواتار',
+	},
 }

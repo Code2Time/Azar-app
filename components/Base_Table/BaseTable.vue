@@ -1,98 +1,99 @@
 <template>
-	<div>
-		<table class="custom-data-table">
-			<TableHeader :headers="processedHeaders" @search="handleSearch" />
-			<TableItems :items="filteredItems" :headers="processedHeaders" />
-			<TableFooter
-				:page="page"
-				:page-count="pageCount"
-				@page-change="updatePage"
-			/>
-		</table>
-	</div>
-</template>
-
-<script>
-import TableHeader from '~/components/Base_Table/TableHeader.vue'
-import TableItems from '~/components/Base_Table/TableItems.vue'
-import TableFooter from '~/components/Base_Table/TableFooter.vue'
-
-export default {
+	<v-card>
+	  <table-header
+		:headers="headers"
+		:search-values="searchValues"
+		@update:search="updateSearch"
+	  />
+	  <table-items
+		:items="filteredItems"
+		:headers="headers"
+		:loading="loading"
+	  />
+	  <table-footer
+		:page="pagination.page"
+		:total-items="filteredItems.length"
+		:items-per-page="pagination.itemsPerPage"
+		@update:page="updatePage"
+	  />
+	</v-card>
+  </template>
+  
+  <script>
+  import TableHeader from './TableHeader.vue'
+  import TableItems from './TableItems.vue'
+  import TableFooter from './TableFooter.vue'
+  
+  export default {
+	name: 'BaseTable',
 	components: {
-		TableHeader,
-		TableItems,
-		TableFooter,
+	  TableHeader,
+	  TableItems,
+	  TableFooter,
 	},
 	props: {
-		headers: {
-			type: Array,
-			required: true,
-			default: () => [],
+	  headers: {
+		type: Array,
+		required: true,
+		validator: (value) => {
+		  return value.every(
+			(header) =>
+			  typeof header.text === 'string' &&
+			  typeof header.value === 'string' &&
+			  typeof header.searchable === 'boolean'
+		  )
 		},
-		items: {
-			type: Array,
-			required: true,
-			default: () => [{
-        username : 'amir'
-      }],
-		},
+	  },
+	  items: {
+		type: Array,
+		required: true,
+	  },
+	  loading: {
+		type: Boolean,
+		default: false,
+	  },
+	  initialPagination: {
+		type: Object,
+		default: () => ({
+		  page: 1,
+		  itemsPerPage: 10,
+		}),
+	  },
 	},
 	data() {
-		return {
-			page: 1,
-			itemsPerPage: 5,
-			searchValues: {},
-		}
+	  return {
+		searchValues: {},
+		pagination: {
+		  page: this.initialPagination.page,
+		  itemsPerPage: this.initialPagination.itemsPerPage,
+		},
+	  }
 	},
 	computed: {
-		processedHeaders() {
-			return this.headers.map((header) => ({
-				...header,
-				searchable: header.searchable !== false,
-				searchValue: this.searchValues[header.value] || '',
-			}))
-		},
-		filteredItems() {
-			const start = (this.page - 1) * this.itemsPerPage
-			const end = start + this.itemsPerPage
-			return this.items
-				.filter((item) => {
-					return Object.keys(this.searchValues).every((key) => {
-						if (!this.searchValues[key]) return true
-						return String(item[key])
-							.toLowerCase()
-							.includes(this.searchValues[key].toLowerCase())
-					})
-				})
-				.slice(start, end)
-		},
-		pageCount() {
-			return Math.ceil(this.items.length / this.itemsPerPage)
-		},
+	  filteredItems() {
+		return this.items.filter((item) => {
+		  return Object.keys(this.searchValues).every((key) => {
+			if (!this.searchValues[key]) return true
+			return String(item[key])
+			  .toLowerCase()
+			  .includes(this.searchValues[key].toLowerCase())
+		  })
+		})
+	  },
+	  paginatedItems() {
+		const start = (this.pagination.page - 1) * this.pagination.itemsPerPage
+		const end = start + this.pagination.itemsPerPage
+		return this.filteredItems.slice(start, end)
+	  },
 	},
 	methods: {
-		updatePage(newPage) {
-			this.page = newPage
-		},
-		handleSearch({ column, value }) {
-			this.$set(this.searchValues, column, value)
-			this.page = 1
-		},
+	  updateSearch({ key, value }) {
+		this.$set(this.searchValues, key, value)
+		this.pagination.page = 1
+	  },
+	  updatePage(page) {
+		this.pagination.page = page
+	  },
 	},
-}
-</script>
-
-<style scoped>
-.custom-data-table {
-	width: 100%;
-	border-collapse: collapse;
-	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-		0 1px 5px 0 rgba(0, 0, 0, 0.12);
-}
-
-.custom-data-table th {
-	padding: 12px;
-	text-align: center;
-	background-color: #f5f5f5;
-}
-</style>
+  }
+  </script>
