@@ -3,6 +3,7 @@ export default {
 		Custom_Component: 'Custom Component',
 		Toggle_Info: 'Toggle Btn Is Disable',
 		Pagination: 'Pagination',
+		Test_Basetable: 'Test',
 		Select: 'More...',
 		Logout: 'Logout',
 		Axios: 'axios',
@@ -34,13 +35,12 @@ export default {
 		HomeTitle: 'Home Page ! this color is a test',
 		User_Pass: 'user : 09111111111 , pass : 123456',
 	},
-	Buttons : {
-		Get_Data : 'Get Data',
-		Search_Users : 'Search Users'
+	Buttons: {
+		Get_Data: 'Get Data',
+		Search_Users: 'Search Users',
 	},
-	Gender : {
-		Female : 'Female',
-		Male  : 'Male',
-
-	}
+	Gender: {
+		Female: 'Female',
+		Male: 'Male',
+	},
 }

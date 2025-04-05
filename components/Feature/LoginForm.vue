@@ -121,7 +121,8 @@ export default {
 			try {
 				const user_req = await this.$api.post('/auth/login', user_datas)
 				if (user_req.status == 200) {
-					localStorage.setItem('authToken', user_req.data.Authorization)
+					console.log(user_req.data.data.Authorization)
+					localStorage.setItem('authToken', user_req.data.data.Authorization)
 					this.$router.push('/')
 					console.log(user_req)
 				} else {

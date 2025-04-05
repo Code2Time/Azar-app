@@ -49,10 +49,10 @@ export default {
 					title: this.$i18n.t('Headers.Custom_Component'),
 					to: { name: 'more-component' }, // استفاده از object route
 				},
-				// {
-				// 	title: this.$i18n.t('Headers.Axios'),
-				// 	to: { name: 'axios' },
-				// },
+				{
+					title: this.$i18n.t('Headers.Test_Basetable'),
+					to: { name: 'test' },
+				},
 				// {
 				// 	title: this.$i18n.t('Headers.Pagination'),
 				// 	to: { name: 'pagination' },

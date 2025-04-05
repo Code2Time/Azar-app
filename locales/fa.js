@@ -3,6 +3,7 @@ export default {
 		Custom_Component: 'بخش های سفارشی',
 		Pagination: 'دسته بندی اطلاعات',
 		Toggle_Info: 'دکمه غیر فعاله',
+		Test_Basetable: 'تست',
 		Select: 'بیشتر...',
 		Axios: 'دیافت داده',
 		Logout: 'خروج',
