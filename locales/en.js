@@ -4,6 +4,7 @@ export default {
 		Toggle_Info: 'Toggle Btn Is Disable',
 		Pagination: 'Pagination',
 		Test_Basetable: 'Test',
+		Products: 'Products',
 		Select: 'More...',
 		Logout: 'Logout',
 		Axios: 'axios',
@@ -43,11 +44,11 @@ export default {
 		Female: 'Female',
 		Male: 'Male',
 	},
-	Base_Table : {
-		Avatar : 'Avatar',
-		Search : 'Search...',
-		First_Name : 'First Name',
-		Last_Name : 'Last Name',
-		Phone_Number : 'Phone Number'
-	}
+	Base_Table: {
+		Avatar: 'Avatar',
+		Search: 'Search...',
+		First_Name: 'First Name',
+		Last_Name: 'Last Name',
+		Phone_Number: 'Phone Number',
+	},
 }

@@ -1,0 +1,70 @@
+<template>
+	<div class="product-container pa-10">
+		<BaseTable
+			:headers="headers"
+			:items="products"
+			:loading="loading"
+			:initial-pagination="initialPagination"
+		/>
+	</div>
+</template>
+
+<script>
+import Button from '~/components/Common/Button.vue'
+import BaseTable from '~/components/Base_Table/BaseTable.vue'
+export default {
+	layout: 'default',
+	components: {
+		Button,
+		BaseTable,
+	},
+	data() {
+		return {
+			loading: false,
+			initialPagination: {
+				page: 1,
+				itemsPerPage: 11,
+			},
+			headers: [
+				// {
+				// 	text: 'img',
+				// 	value: 'avatar',
+				// 	searchable: false,
+				// },
+				{
+					text: 'product',
+					value: 'name',
+					searchable: true,
+				},
+				{
+					text: 'price',
+					value: 'price',
+					searchable: true,
+				},
+			],
+			products: [],
+		}
+	},
+	async mounted() {
+		await this.fetch_products()
+	},
+	methods: {
+		async fetch_products() {
+			try {
+				const response = await this.$api.post('/product')
+				this.products = response.data.data.model.data.map((item) => ({
+					// avatar: 'https://test-api.sehregoli.com/'.item.main_picture_path,
+					name: item.name,
+					slug: item.slug || '------',
+					price: item.base_price + '$',
+				}))
+				console.log(this.products)
+			} catch (error) {
+				console.error('Error fetching users:', error)
+			}
+		},
+	},
+}
+</script>
+
+<style scoped></style>
