@@ -9,6 +9,7 @@
 			:prev-icon="prevIcon"
 			:next-icon="nextIcon"
 			@input="handlePageChange"
+			dir="ltr"
 		></v-pagination>
 	</div>
 </template>

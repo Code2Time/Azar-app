@@ -1,6 +1,6 @@
 <template>
 	<div class="Base-container pa-5">
-		<base-table
+		<BaseTable
 			:headers="headers"
 			:items="userItems"
 			:loading="loading"
@@ -10,13 +10,17 @@
 </template>
 
 <script>
+import BaseTable from '~/components/Base_Table/BaseTable.vue'
 export default {
+	components: {
+		BaseTable,
+	},
 	data() {
 		return {
 			loading: false,
 			initialPagination: {
 				page: 1,
-				itemsPerPage: 8,
+				itemsPerPage: 10,
 			},
 			headers: [
 				{
@@ -50,7 +54,6 @@ export default {
 		async fetchUsers() {
 			this.loading = true
 			try {
-				// فرض می‌کنیم این داده‌ها از API دریافت می‌شوند
 				const response = await this.$api.post('/user')
 				this.userItems = response.data.data.model.data.map((user) => ({
 					avatar: 'https://avatar.iran.liara.run/public/18',

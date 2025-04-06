@@ -46,7 +46,7 @@ export default {
 	},
 	Base_Table: {
 		Avatar: 'Avatar',
-		Search: 'Search...',
+		Search: 'Search',
 		First_Name: 'First Name',
 		Last_Name: 'Last Name',
 		Phone_Number: 'Phone Number',

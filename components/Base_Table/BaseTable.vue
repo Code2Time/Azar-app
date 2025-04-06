@@ -1,16 +1,12 @@
 <template>
-	<v-card>
-		<table-header
+	<v-card dir="rtl">
+		<TableHeader
 			:headers="headers"
 			:search-values="searchValues"
 			@update:search="updateSearch"
 		/>
-		<table-items
-			:items="paginatedItems"
-			:headers="headers"
-			:loading="loading"
-		/>
-		<table-footer
+		<TableItems :items="paginatedItems" :headers="headers" :loading="loading" />
+		<TableFooter
 			:page="pagination.page"
 			:total-items="filteredItems.length"
 			:items-per-page="pagination.itemsPerPage"
@@ -20,9 +16,9 @@
 </template>
 
 <script>
+import TableFooter from './TableFooter.vue'
 import TableHeader from './TableHeader.vue'
 import TableItems from './TableItems.vue'
-import TableFooter from './TableFooter.vue'
 
 export default {
 	name: 'BaseTable',
