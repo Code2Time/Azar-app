@@ -13,7 +13,7 @@ export default function ({ $axios, store, redirect }, inject) {
 	api.onRequest((config) => {
 		// افزودن توکن احراز هویت به هدر
 		config.headers.Authorization =
-			'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9yoC74kjFYn.zdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRnpt8Xl752ZYj7Aq.Prq7e0NeRefw9ekvrtfovw67Z202504KrvVe2YsFeew7Ef05108IMqSUrPrG7sHvtYVH7rrryevd5rN6DhJtj0410l1rIdf7sW7IaA2gjisfLryWqYf8VveSfqn7s35wM0HRfzEyolv4srUe'
+			'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9ehRQYhGgre.zdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gR127y5X3ygUFru7f.erCEdpDnSdYeaUr4nl2fKYSXM2025045kRsScsB9jxCvnD06087ebzywA4yQWh07wnL79TJSi50ea22xPURrG0426W44rYqyZgs5dbzw1YBywF3d7BiryAVNDEKmEsdmOdJsf6eJI5XKttp2'
 
 		// لاگ درخواست در حالت توسعه
 		if (process.env.NODE_ENV === 'development') {
@@ -29,7 +29,7 @@ export default function ({ $axios, store, redirect }, inject) {
 		// const token = store.state.auth.token;
 
 		if (token) {
-			config.headers.Authorization = `Bearer ${token}`
+			config.headers.Authorization = `Bearer${token}`
 		}
 
 		// لاگ درخواست در حالت توسعه
