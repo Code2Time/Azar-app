@@ -33,15 +33,22 @@
 							:persistent-hint="false"
 							:single-line="true"
 							@enter="applySearch(header.value)"
+							@input="handleInputChange(header.value)"
 							style="width: 120px"
 							class="grey-input"
+							ref="searchInputs"
 						/>
 					</div>
 				</v-col>
 			</template>
 
 			<v-col cols="6" sm="4" md="3" class="pa-1">
-				<Button :value="this.$i18n.t('Base_Table.Search')" @click="applySearch(this.search.name)" />
+				<div class="d-flex align-center justify-center">
+					<Button
+						:value="$i18n.t('Base_Table.Search')"
+						@click="handleButtonSearch"
+					/>
+				</div>
 			</v-col>
 		</v-row>
 	</v-card-title>
@@ -77,7 +84,9 @@ export default {
 	},
 	data() {
 		return {
-			search: { ...this.searchValues }, // برای مقادیر نهایی جستجو
+			search: { ...this.searchValues },
+			lastSearchField: null,
+			inputChanges: {}, // برای ذخیره تغییرات هر اینپوت
 		}
 	},
 	watch: {
@@ -85,17 +94,67 @@ export default {
 			handler(newVal) {
 				this.search = { ...newVal }
 			},
+			deep: true,
+		},
+		// واچر برای تشخیص تغییرات در هر فیلد جستجو
+		search: {
+			handler(newVal, oldVal) {
+				// پیدا کردن فیلدی که تغییر کرده
+				const changedField = Object.keys(newVal).find(
+					(key) => newVal[key] !== oldVal[key]
+				)
+
+				if (changedField && newVal[changedField]) {
+					console.log(`Field ${changedField} changed to:`, newVal[changedField])
+					this.lastSearchField = changedField
+					this.inputChanges[changedField] = newVal[changedField]
+				}
+			},
+			deep: true,
 		},
 	},
 	methods: {
 		applySearch(key) {
-			// فقط زمانی که کاربر Enter میزند مقدار جستجو اعمال میشود
-
+			this.lastSearchField = key
 			this.$emit('update:search', { key, value: this.search[key] })
 		},
-		test() {
-			console.log(this.search.name)
+
+		handleButtonSearch() {
+			if (this.lastSearchField) {
+				// اگر فیلدی انتخاب شده بود، فقط همان فیلد جستجو شود
+				this.applySearch(this.lastSearchField)
+			} else {
+				// اگر فیلدی انتخاب نشده بود، همه فیلدهای پرشده جستجو شوند
+				const searchResult = {}
+
+				this.headers.forEach((header) => {
+					if (header.searchable && this.search[header.value]) {
+						searchResult[header.value] = this.search[header.value]
+					} else {
+						console.log('Searching in all filled fields:', this.search)
+					}
+				})
+
+				// ارسال همه مقادیر پرشده به parent
+				this.$emit('update:search', searchResult)
+			}
 		},
+
+		handleInputChange(field) {
+			console.log(`User typed in ${field}:`, this.search[field])
+			this.lastSearchField = field // ذخیره آخرین فیلد ویرایش‌شده
+		},
+	},
+	mounted() {
+		this.$el.querySelectorAll('.grey-input input').forEach((input) => {
+			input.addEventListener('focus', (e) => {
+				const headerValue = e.target
+					.closest('[class*="col-"]')
+					.getAttribute('key')
+				this.lastSearchField = headerValue
+				console.log(`Input ${headerValue} focused`)
+			})
+		})
 	},
 }
 </script>
