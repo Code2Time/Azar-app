@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="Base-container pa-5">
 		<base-table
 			:headers="headers"
 			:items="userItems"
@@ -16,13 +16,29 @@ export default {
 			loading: false,
 			initialPagination: {
 				page: 1,
-				itemsPerPage: 5,
+				itemsPerPage: 8,
 			},
 			headers: [
-				{ text: this.$i18n.t('Base_Table.Avatar'), value: 'avatar', searchable: false },
-				{ text: this.$i18n.t('Base_Table.First_Name'), value: 'name', searchable: true },
-				{ text: this.$i18n.t('Base_Table.Last_Name'), value: 'family', searchable: true },
-				{ text: this.$i18n.t('Base_Table.Phone_Number'), value: 'phone', searchable: true },
+				{
+					text: this.$i18n.t('Base_Table.Avatar'),
+					value: 'avatar',
+					searchable: false,
+				},
+				{
+					text: this.$i18n.t('Base_Table.First_Name'),
+					value: 'name',
+					searchable: true,
+				},
+				{
+					text: this.$i18n.t('Base_Table.Last_Name'),
+					value: 'family',
+					searchable: true,
+				},
+				{
+					text: this.$i18n.t('Base_Table.Phone_Number'),
+					value: 'phone',
+					searchable: true,
+				},
 			],
 			userItems: [],
 		}
@@ -51,3 +67,9 @@ export default {
 	},
 }
 </script>
+<style scoped>
+.Base-container {
+	width: 100%;
+	height: auto;
+}
+</style>
