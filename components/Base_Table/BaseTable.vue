@@ -11,6 +11,7 @@
 			:total-items="filteredItems.length"
 			:items-per-page="pagination.itemsPerPage"
 			@update:page="updatePage"
+			@update:itemsPerPage="updateprepage"
 		/>
 	</v-card>
 </template>
@@ -98,6 +99,9 @@ export default {
 			this.pagination.page = page
 			this.$emit('update:page', page) //ارسال صفحه فعلی برای دریافت داده
 			// console.log(page);
+		},
+		updateprepage(pageprepage) {
+			this.pagination.itemsPerPage = pageprepage
 		},
 	},
 }

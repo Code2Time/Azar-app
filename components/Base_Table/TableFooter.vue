@@ -1,13 +1,46 @@
 <template>
 	<v-card-actions>
-		<v-spacer />
-		<Pagination
-			:value="page"
-			:total-items="totalItems"
-			:items-per-page="itemsPerPage"
-			@input="handlePageChange"
-		/>
-		<v-spacer />
+		<v-container>
+			<v-row>
+				<v-col cols="12">
+					<Pagination
+						:value="page"
+						:total-items="totalItems"
+						:items-per-page="localItemsPerPage"
+						@input="handlePageChange"
+					/>
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col>
+					<span>show items</span>
+					<v-menu offset-y>
+						<template v-slot:activator="{ on, attrs }">
+							<v-btn
+								dark
+								text
+								color="primary"
+								class="ml-2"
+								v-bind="attrs"
+								v-on="on"
+							>
+								{{ localItemsPerPage }}
+								<v-icon>mdi-chevron-down</v-icon>
+							</v-btn>
+						</template>
+						<v-list>
+							<v-list-item
+								v-for="(number, index) in itemsPerPageArray"
+								:key="index"
+								@click="updateItemsPerPage(number)"
+							>
+								<v-list-item-title>{{ number }}</v-list-item-title>
+							</v-list-item>
+						</v-list>
+					</v-menu>
+				</v-col>
+			</v-row>
+		</v-container>
 	</v-card-actions>
 </template>
 
@@ -33,10 +66,44 @@ export default {
 			required: true,
 		},
 	},
+	data() {
+		return {
+			itemsPerPageArray: [4, 8, 12],
+			localItemsPerPage: this.itemsPerPage, // مقدار اولیه از prop گرفته می‌شود
+		}
+	},
+	watch: {
+		// اگر prop itemsPerPage از خارج تغییر کرد، مقدار محلی را به‌روزرسانی کن
+		itemsPerPage(newVal) {
+			this.localItemsPerPage = newVal
+		},
+	},
+	computed: {
+		startItemIndex() {
+			return (this.page - 1) * this.localItemsPerPage + 1
+		},
+		endItemIndex() {
+			return Math.min(this.page * this.localItemsPerPage, this.totalItems)
+		},
+	},
 	methods: {
 		handlePageChange(page) {
+			console.log('Page changed to:', page)
 			this.$emit('update:page', page)
+		},
+
+		updateItemsPerPage(number) {
+			console.log('Items per page changed to:', number)
+			this.localItemsPerPage = number // به‌روزرسانی مقدار محلی
+			this.$emit('update:itemsPerPage', number)
+			this.$emit('update:page', 1)
 		},
 	},
 }
 </script>
+
+<style scoped>
+.v-card-actions {
+	padding: 16px;
+}
+</style>
