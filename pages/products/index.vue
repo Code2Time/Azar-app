@@ -26,11 +26,11 @@ export default {
 				itemsPerPage: 11,
 			},
 			headers: [
-				// {
-				// 	text: 'img',
-				// 	value: 'avatar',
-				// 	searchable: false,
-				// },
+				{
+					text: 'img',
+					value: 'avatar',
+					searchable: false,
+				},
 				{
 					text: 'product',
 					value: 'name',
@@ -49,16 +49,20 @@ export default {
 		await this.fetch_products()
 	},
 	methods: {
+		change_addres(url) {
+			const img_url = 'https://test-api.sehregoli.com/' + url
+			console.log(img_url)
+			return img_url
+		},
 		async fetch_products() {
 			try {
 				const response = await this.$api.post('/product')
 				this.products = response.data.data.model.data.map((item) => ({
-					// avatar: 'https://test-api.sehregoli.com/'.item.main_picture_path,
+					avatar: this.change_addres(item.main_picture_path),
 					name: item.name,
 					slug: item.slug || '------',
 					price: item.base_price + '$',
 				}))
-				console.log(this.products)
 			} catch (error) {
 				console.error('Error fetching users:', error)
 			}
