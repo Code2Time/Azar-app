@@ -75,10 +75,11 @@ export default {
 				console.error('Error fetching users:', error)
 			} finally {
 				this.loading = false
-			}
+			}	
 		},
 		handlePageUpdate(page) {
 			this.page = page
+			console.log(page)
 		},
 	},
 }

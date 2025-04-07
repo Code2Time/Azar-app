@@ -62,18 +62,17 @@ export default {
 			required: true,
 		},
 		itemsPerPage: {
-			type: Number,
+			type: [Number],
 			required: true,
 		},
 	},
 	data() {
 		return {
-			itemsPerPageArray: [4, 8, 12],
+			itemsPerPageArray: [5, 10, 15],
 			localItemsPerPage: this.itemsPerPage, // مقدار اولیه از prop گرفته می‌شود
 		}
 	},
 	watch: {
-		// اگر prop itemsPerPage از خارج تغییر کرد، مقدار محلی را به‌روزرسانی کن
 		itemsPerPage(newVal) {
 			this.localItemsPerPage = newVal
 		},
