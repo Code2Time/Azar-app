@@ -23,7 +23,7 @@ export default {
 			loading: false,
 			initialPagination: {
 				page: 1,
-				itemsPerPage: 11,
+				itemsPerPage: 7,
 			},
 			headers: [
 				{
