@@ -5,13 +5,14 @@
 			:items="products"
 			:loading="loading"
 			:initial-pagination="initialPagination"
+			@update:page="handlePageUpdate"
 		/>
 	</div>
 </template>
 
 <script>
-import Button from '~/components/Common/Button.vue'
 import BaseTable from '~/components/Base_Table/BaseTable.vue'
+import Button from '~/components/Common/Button.vue'
 export default {
 	layout: 'default',
 	components: {
@@ -51,12 +52,19 @@ export default {
 	methods: {
 		change_addres(url) {
 			const img_url = 'https://api.sehregoli.com/' + url
-			console.log(img_url)
+			// console.log(img_url)
 			return img_url
 		},
-		async fetch_products() {
+		async fetch_products(params = {}) {
 			try {
-				const response = await this.$api.post('/product')
+				this.loading = true
+				const query = {
+					page: this.page,
+					row_number: this.initialPagination.itemsPerPage,
+					...params,
+				}
+				const response = await this.$api.post('/product', { params: query })
+				console.log(response)
 				this.products = response.data.data.model.data.map((item) => ({
 					avatar: this.change_addres(item.main_picture_path),
 					name: item.name,
@@ -65,7 +73,12 @@ export default {
 				}))
 			} catch (error) {
 				console.error('Error fetching users:', error)
+			} finally {
+				this.loading = false
 			}
+		},
+		handlePageUpdate(page) {
+			this.page = page
 		},
 	},
 }

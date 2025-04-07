@@ -65,6 +65,9 @@ export default {
 			},
 		}
 	},
+	mounted() {
+		this.$emit('update:page', this.pagination.page)
+	},
 	computed: {
 		filteredItems() {
 			return this.items.filter((item) => {
@@ -93,6 +96,8 @@ export default {
 		},
 		updatePage(page) {
 			this.pagination.page = page
+			this.$emit('update:page', page) //ارسال صفحه فعلی برای دریافت داده
+			// console.log(page);
 		},
 	},
 }

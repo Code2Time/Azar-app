@@ -47,11 +47,11 @@ export default {
 			menuItems: [
 				{
 					title: this.$i18n.t('Headers.Custom_Component'),
-					to: { name: 'more-component' }, // استفاده از object route
+					to: { name: 'more-component' },
 				},
 				{
 					title: this.$i18n.t('Headers.Test_Basetable'),
-					to: { name: 'test' },
+					to: { name: 'users' },
 				},
 				{
 					title: this.$i18n.t('Headers.Products'),

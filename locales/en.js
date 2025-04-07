@@ -3,7 +3,7 @@ export default {
 		Custom_Component: 'Custom Component',
 		Toggle_Info: 'Toggle Btn Is Disable',
 		Pagination: 'Pagination',
-		Test_Basetable: 'Test',
+		Test_Basetable: 'users',
 		Products: 'Products',
 		Select: 'More...',
 		Logout: 'Logout',
