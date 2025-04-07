@@ -23,7 +23,7 @@ export default {
 			loading: false,
 			initialPagination: {
 				page: 1,
-				itemsPerPage: 7,
+				itemsPerPage: 6,
 			},
 			headers: [
 				{
@@ -50,7 +50,7 @@ export default {
 	},
 	methods: {
 		change_addres(url) {
-			const img_url = 'https://test-api.sehregoli.com/' + url
+			const img_url = 'https://api.sehregoli.com/' + url
 			console.log(img_url)
 			return img_url
 		},

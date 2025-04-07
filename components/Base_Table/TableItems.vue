@@ -7,7 +7,7 @@
 		disable-pagination
 	>
 		<template #[`item.avatar`]="{ item }">
-			<v-avatar size="36">
+			<v-avatar size="45" class="pa-2">
 				<img :src="item.avatar" :alt="item.name" />
 			</v-avatar>
 		</template>
