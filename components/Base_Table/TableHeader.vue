@@ -1,49 +1,42 @@
 <template>
-	<v-card-title class="px-2 py-1 dark-blue-header" dir="rtl">
-		<v-row class="align-center justify-center">
-			<v-col class="pa-6 mt-2">
-				<ProductFilter />
-			</v-col>
-			<v-col class="pa-1">
-				<div class="d-flex align-center justify-center">
-					<Button
-						:value="$i18n.t('Base_Table.Search')"
-						@click="handleButtonSearch"
-					/>
-				</div>
-			</v-col>
-			<template v-for="header in headers">
-				<v-col
-					v-if="header.value !== 'avatar'"
-					:key="header.value"
-					cols="6"
-					sm="4"
-					md="3"
-					class="pa-1"
-				>
-					<div
-						class="d-flex align-center justify-center mx-16"
-						style="gap: 8px"
-					>
-						<Input
-							v-if="header.searchable"
-							v-model="search[header.value]"
-							:label="header.text"
-							:hide-details="true"
-							:persistent-hint="false"
-							:single-line="true"
-							@enter="applySearch(header.value)"
-							@input="handleInputChange(header.value)"
-							style="width: 120px"
-							class="grey-input"
-							ref="searchInputs"
-							dir="ltr"
+	<div>
+		<v-container>
+			<v-row>
+				<v-col cols="3">
+					<div class="d-flex flex-row justify-center align-center">
+						<ProductFilter />
+						<v-divider class="ma-1"></v-divider>
+						<Button
+							:value="$i18n.t('Base_Table.Search')"
+							@click="handleButtonSearch"
 						/>
 					</div>
 				</v-col>
-			</template>
-		</v-row>
-	</v-card-title>
+				<v-col cols="9">
+					<div
+						class="d-flex flex-row justify-space-between align-content-space-"
+					>
+						<div v-for="(header, index) in headers" :key="index">
+							<Input
+								v-if="header.searchable"
+								v-model="search[header.value]"
+								:label="header.text"
+								:hide-details="true"
+								:persistent-hint="false"
+								:single-line="true"
+								@enter="applySearch(header.value)"
+								@input="handleInputChange(header.value)"
+								class="grey-input"
+								ref="searchInputs"
+								dir="ltr"
+							/>
+						</div>
+					</div>
+				</v-col>
+			</v-row>
+		</v-container>
+		<v-divider />
+	</div>
 </template>
 
 <script>

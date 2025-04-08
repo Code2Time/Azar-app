@@ -1,5 +1,6 @@
 <template>
 	<Select
+	    class="mt-5"
 		dir="ltr"
 		v-model="sortBy"
 		:items="sortOptions"
