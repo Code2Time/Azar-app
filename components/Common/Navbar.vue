@@ -57,6 +57,10 @@ export default {
 					title: this.$i18n.t('Headers.Products'),
 					to: { name: 'products' },
 				},
+				{
+					title: 'Date',
+					to: { name: 'date' },
+				},
 			],
 		}
 	},
