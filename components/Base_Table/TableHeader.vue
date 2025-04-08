@@ -1,10 +1,10 @@
 <template>
 	<v-card-title class="px-2 py-1 dark-blue-header" dir="rtl">
 		<v-row class="align-center justify-center">
-			<v-col cols="6" sm="4" md="3" class="pa-6 mt-2">
+			<v-col class="pa-6 mt-2">
 				<ProductFilter />
 			</v-col>
-			<v-col cols="6" sm="4" md="3" class="pa-1">
+			<v-col class="pa-1">
 				<div class="d-flex align-center justify-center">
 					<Button
 						:value="$i18n.t('Base_Table.Search')"
