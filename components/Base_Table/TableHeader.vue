@@ -1,6 +1,9 @@
 <template>
 	<v-card-title class="px-2 py-1 dark-blue-header" dir="rtl">
-		<v-row class="align-center justify-center" no-gutters>
+		<v-row class="align-center justify-center">
+			<v-col cols="6" sm="4" md="3" class="pa-6 mt-2">
+				<ProductFilter />
+			</v-col>
 			<v-col cols="6" sm="4" md="3" class="pa-1">
 				<div class="d-flex align-center justify-center">
 					<Button
@@ -46,12 +49,14 @@
 <script>
 import Input from '../Common/Input.vue'
 import Button from '../Common/Button.vue'
+import ProductFilter from '../Filters/ProductSort.vue'
 
 export default {
 	name: 'TableHeader',
 	components: {
 		Input,
 		Button,
+		ProductFilter,
 	},
 	props: {
 		headers: {

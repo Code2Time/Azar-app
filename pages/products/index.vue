@@ -51,7 +51,7 @@ export default {
 	},
 	methods: {
 		change_addres(url) {
-			const img_url = 'https://api.sehregoli.com/' + url
+			const img_url = `https://api.sehregoli.com/${url}`
 			// console.log(img_url)
 			return img_url
 		},
