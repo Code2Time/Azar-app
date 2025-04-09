@@ -1,15 +1,17 @@
 <template>
-	<Select
-	    class="mt-5"
-		dir="ltr"
-		v-model="sortBy"
-		:items="sortOptions"
-		label="Sort by "
-        color="primary"
-		outlined
-		dense
-		@change="updateSort"
-	/>
+	<div class="select-container">
+		<Select
+			class="mt-5 text-caption"
+			dir="ltr"
+			v-model="sortBy"
+			:items="sortOptions"
+			label="Sort by "
+			color="primary"
+			outlined
+			dense
+			@change="updateSort"
+		/>
+	</div>
 </template>
 
 <script>
@@ -44,3 +46,12 @@ export default {
 	},
 }
 </script>
+
+<style scoped>
+.select-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 70px;
+}
+</style>

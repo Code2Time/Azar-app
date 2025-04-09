@@ -2,20 +2,18 @@
 	<div>
 		<v-container>
 			<v-row>
-				<v-col cols="3">
-					<div class="d-flex flex-row justify-center align-center">
+				<v-col cols="12">
+					<DatePicker @date-range-selected="log_date" />
+				</v-col>
+			</v-row>
+			<v-row>
+				<v-col cols="12">
+					<div class="d-flex flex-row justify-space-between align-center">
 						<ProductFilter />
-						<v-divider class="ma-1"></v-divider>
 						<Button
 							:value="$i18n.t('Base_Table.Search')"
 							@click="handleButtonSearch"
 						/>
-					</div>
-				</v-col>
-				<v-col cols="9">
-					<div
-						class="d-flex flex-row justify-space-between align-content-space-"
-					>
 						<div v-for="(header, index) in headers" :key="index">
 							<Input
 								v-if="header.searchable"
@@ -40,9 +38,10 @@
 </template>
 
 <script>
-import Input from '../Common/Input.vue'
-import Button from '../Common/Button.vue'
-import ProductFilter from '../Filters/ProductSort.vue'
+import Input from '~/components/Common/Input.vue'
+import Button from '~/components/Common/Button.vue'
+import ProductFilter from '~/components/Filters/ProductSort.vue'
+import DatePicker from '~/components/Feature/DatePicker.vue'
 
 export default {
 	name: 'TableHeader',
@@ -50,6 +49,7 @@ export default {
 		Input,
 		Button,
 		ProductFilter,
+		DatePicker,
 	},
 	props: {
 		headers: {
@@ -127,17 +127,12 @@ export default {
 			console.log(`User typed in ${field}:`, this.search[field])
 			this.lastSearchField = field
 		},
+		log_date(range) {
+			console.log('========> ', range)
+		},
 	},
 	mounted() {
-		this.$el.querySelectorAll('.grey-input input').forEach((input) => {
-			input.addEventListener('focus', (e) => {
-				const headerValue = e.target
-					.closest('[class*="col-"]')
-					.getAttribute('key')
-				this.lastSearchField = headerValue
-				console.log(`Input ${headerValue} focused`)
-			})
-		})
+	
 	},
 }
 </script>

@@ -36,13 +36,6 @@
 			</v-row>
 		</v-container>
 		<v-divider />
-		<v-container>
-			<v-row>
-				<v-col>
-					<BaseTable :headers="headers" :items="items" />
-				</v-col>
-			</v-row>
-		</v-container>
 	</div>
 </template>
 <script>
