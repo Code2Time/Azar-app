@@ -57,6 +57,7 @@ export default {
 					title: this.$i18n.t('Headers.Products'),
 					to: { name: 'products' },
 				},
+<<<<<<< HEAD
 				{
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -71,6 +72,8 @@ export default {
 					to: { name: 'products2' },
 >>>>>>> parent of bc8c58b (Delete Products2 Page And Uppdate Nav)
 				},
+=======
+>>>>>>> parent of b6a16d8 (Add Sort Store And Create SortProduct Component)
 			],
 		}
 	},

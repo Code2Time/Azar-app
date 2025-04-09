@@ -5,7 +5,6 @@ export default {
 		Pagination: 'Pagination',
 		Test_Basetable: 'users',
 		Products: 'Products',
-		Products2: 'Products2',
 		Select: 'More...',
 		Logout: 'Logout',
 		Axios: 'axios',

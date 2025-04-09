@@ -16,10 +16,7 @@
 							@click="handleButtonSearch"
 =======
 	<v-card-title class="px-2 py-1 dark-blue-header" dir="rtl">
-		<v-row class="align-center justify-center">
-			<v-col cols="6" sm="4" md="3" class="pa-6 mt-2">
-				<ProductFilter />
-			</v-col>
+		<v-row class="align-center justify-center" no-gutters>
 			<v-col cols="6" sm="4" md="3" class="pa-1">
 				<div class="d-flex align-center justify-center">
 					<Button
@@ -80,18 +77,26 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import Input from '~/components/Common/Input.vue'
 import Button from '~/components/Common/Button.vue'
 import ProductFilter from '~/components/Filters/ProductSort.vue'
 import DatePicker from '~/components/Feature/DatePicker.vue'
+=======
+import Input from '../Common/Input.vue'
+import Button from '../Common/Button.vue'
+>>>>>>> parent of b6a16d8 (Add Sort Store And Create SortProduct Component)
 
 export default {
 	name: 'TableHeader',
 	components: {
 		Input,
 		Button,
+<<<<<<< HEAD
 		ProductFilter,
 		DatePicker,
+=======
+>>>>>>> parent of b6a16d8 (Add Sort Store And Create SortProduct Component)
 	},
 	props: {
 		headers: {

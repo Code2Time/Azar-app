@@ -6,7 +6,6 @@ export default {
 		Test_Basetable: 'کاربران',
 		Axios: 'دیافت داده',
 		Products: 'محصولات',
-		Products2: '2محصولات',
 		Select: 'بیشتر...',
 		Logout: 'خروج',
 		Login: 'ورود',
