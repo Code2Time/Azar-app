@@ -3,7 +3,7 @@
 		<v-container>
 			<v-row>
 				<v-col cols="12">
-					<DatePicker @date-range-selected="log_date" />
+					<DatePicker />
 				</v-col>
 			</v-row>
 			<v-row>
@@ -126,9 +126,6 @@ export default {
 		handleInputChange(field) {
 			console.log(`User typed in ${field}:`, this.search[field])
 			this.lastSearchField = field
-		},
-		log_date(range) {
-			console.log('========> ', range)
 		},
 	},
 	mounted() {

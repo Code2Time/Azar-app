@@ -86,17 +86,11 @@ export default {
 		},
 	},
 	methods: {
-
 		applyDateRange() {
 			if (this.isDateRangeValid) {
 				this.setDateRange({
 					startDate: this.startDate,
 					endDate: this.endDate,
-				})
-
-				this.$emit('date-range-selected', {
-					start: this.startDate,
-					end: this.endDate,
 				})
 			}
 		},
@@ -104,13 +98,11 @@ export default {
 		clearStartDate() {
 			this.startDate = null
 			this.clearDateRange()
-			this.$emit('start-date-changed', null)
 		},
 
 		clearEndDate() {
 			this.endDate = null
 			this.clearDateRange()
-			this.$emit('end-date-changed', null)
 		},
 		formatDate(date) {
 			if (!date) return ''
@@ -119,11 +111,9 @@ export default {
 		},
 		clearStartDate() {
 			this.startDate = null
-			this.$emit('start-date-changed', null)
 		},
 		clearEndDate() {
 			this.endDate = null
-			this.$emit('end-date-changed', null)
 		},
 		handleEndDateSelection() {
 			this.endDateMenu = false
@@ -135,10 +125,6 @@ export default {
 			console.log('بازه زمانی انتخاب شده:', {
 				from: this.startDate,
 				to: this.endDate,
-			})
-			this.$emit('date-range-selected', {
-				start: this.startDate,
-				end: this.endDate,
 			})
 		},
 	},
