@@ -58,8 +58,13 @@ export default {
 					to: { name: 'products' },
 				},
 				{
+<<<<<<< HEAD
 					title: 'Date',
 					to: { name: 'date' },
+=======
+					title: this.$i18n.t('Headers.Products2'),
+					to: { name: 'products2' },
+>>>>>>> parent of bc8c58b (Delete Products2 Page And Uppdate Nav)
 				},
 			],
 		}

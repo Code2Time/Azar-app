@@ -1,5 +1,6 @@
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<div class="product-container pa-4">
 		<BaseTable
 			:headers="headers"
@@ -7,6 +8,8 @@
 			:loading="loading"
 			:initial-pagination="initialPagination"
 =======
+=======
+>>>>>>> parent of bc8c58b (Delete Products2 Page And Uppdate Nav)
 	<div class="product-container pa-10">
 		<BaseTable
 			:headers="headers"
@@ -14,12 +17,16 @@
 			:loading="loading"
 			:initial-pagination="initialPagination"
 			@update:page="handlePageUpdate"
+<<<<<<< HEAD
+>>>>>>> parent of bc8c58b (Delete Products2 Page And Uppdate Nav)
+=======
 >>>>>>> parent of bc8c58b (Delete Products2 Page And Uppdate Nav)
 		/>
 	</div>
 </template>
 
 <script>
+<<<<<<< HEAD
 <<<<<<< HEAD
 import { mapGetters } from 'vuex'
 
@@ -66,6 +73,8 @@ export default {
 		getImageUrl(path) {
 			return `https://api.sehregoli.com/${path}`
 =======
+=======
+>>>>>>> parent of bc8c58b (Delete Products2 Page And Uppdate Nav)
 import BaseTable from '~/components/Base_Table/BaseTable.vue'
 import Button from '~/components/Common/Button.vue'
 export default {
@@ -135,12 +144,20 @@ export default {
 		handlePageUpdate(page) {
 			this.page = page
 			console.log(page)
+<<<<<<< HEAD
+>>>>>>> parent of bc8c58b (Delete Products2 Page And Uppdate Nav)
+=======
 >>>>>>> parent of bc8c58b (Delete Products2 Page And Uppdate Nav)
 		},
 	},
 }
 </script>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+<style scoped></style>
+>>>>>>> parent of bc8c58b (Delete Products2 Page And Uppdate Nav)
 =======
 
 <style scoped></style>
