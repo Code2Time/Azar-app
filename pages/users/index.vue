@@ -108,6 +108,7 @@ export default {
 			} catch (error) {
 				console.error('Error in date filtering:', error)
 				this.$toast.error('خطا در فیلتر کردن بر اساس تاریخ')
+				this.fetchUsers()
 			} finally {
 				this.loading = false
 			}
