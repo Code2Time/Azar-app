@@ -5,6 +5,7 @@
 			:items="userItems"
 			:loading="loading"
 			:initial-pagination="initialPagination"
+			@update:page="handlePageUpdate"
 		/>
 	</div>
 </template>
@@ -51,10 +52,17 @@ export default {
 		await this.fetchUsers()
 	},
 	methods: {
-		async fetchUsers() {
+		async fetchUsers(params = {}) {
 			this.loading = true
+			const query = {
+				page: this.convertToDoubleQuotedJson(this.page),
+				row_number: this.convertToDoubleQuotedJson(
+					this.initialPagination.itemsPerPage
+				),
+				...params,
+			}
 			try {
-				const response = await this.$api.post('/user')
+				const response = await this.$api.post('/user', { params: query })
 				this.userItems = response.data.data.model.data.map((user) => ({
 					avatar: 'https://avatar.iran.liara.run/public/18',
 					name: user.first_name,
@@ -66,6 +74,13 @@ export default {
 			} finally {
 				this.loading = false
 			}
+		},
+		handlePageUpdate(page) {
+			this.page = page
+			this.fetchUsers()
+		},
+		convertToDoubleQuotedJson(params) {
+			return JSON.stringify(params, null, 2)
 		},
 	},
 }
