@@ -44,6 +44,11 @@ export default {
 					value: 'phone',
 					searchable: true,
 				},
+				{
+					text: this.$i18n.t('Base_Table.Date'),
+					value: 'created_at',
+					searchable: true,
+				},
 			],
 			userItems: [],
 		}
@@ -65,6 +70,7 @@ export default {
 				const response = await this.$api.post('/user', { params: query })
 				this.userItems = response.data.data.model.data.map((user) => ({
 					avatar: 'https://avatar.iran.liara.run/public/18',
+					created_at: this.convertIsoToShamsi(user.created_at),
 					name: user.first_name,
 					family: user.last_name || '------',
 					phone: user.username,
@@ -79,8 +85,19 @@ export default {
 			this.page = page
 			this.fetchUsers()
 		},
-		convertToDoubleQuotedJson(params) {
+		convertToDoubleQuotedJson(params) {       //مرتب سازی و فرمت json برای ارسال params
 			return JSON.stringify(params, null, 2)
+		},
+		convertIsoToShamsi(isoDate) {           //تبدیل تاریخ میلادی به شمسی
+			const date = new Date(isoDate)
+			const year = date.getUTCFullYear()
+			const month = date.getUTCMonth() + 1
+			const day = date.getUTCDate()
+			let shamsiYear = year - 621
+			if (month > 3) {
+				shamsiYear++
+			}
+			return `${shamsiYear}/${month}/${day}`
 		},
 	},
 }

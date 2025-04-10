@@ -46,6 +46,7 @@ export default {
 		Male: 'Male',
 	},
 	Base_Table: {
+		Date: 'Date',
 		Avatar: 'Avatar',
 		Search: 'Search',
 		First_Name: 'First Name',

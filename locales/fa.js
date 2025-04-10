@@ -51,5 +51,7 @@ export default {
 		First_Name: 'نام',
 		Search: '...جستجو',
 		Avatar: 'آواتار',
+		Date: 'تاریخ',
+
 	},
 }
