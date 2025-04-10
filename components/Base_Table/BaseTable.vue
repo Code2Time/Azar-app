@@ -4,6 +4,7 @@
 			:headers="headers"
 			:search-values="searchValues"
 			@update:search="updateSearch"
+			@selected_date="date_filter"
 		/>
 		<TableItems :items="paginatedItems" :headers="headers" :loading="loading" />
 		<TableFooter
@@ -103,6 +104,10 @@ export default {
 		updateprepage(pageprepage) {
 			this.pagination.itemsPerPage = pageprepage
 		},
+		date_filter(selected_date){
+			console.log('Basetable' , selected_date)
+			this.$emit('selected_date', selected_date)
+		}
 	},
 }
 </script>

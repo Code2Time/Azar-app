@@ -6,6 +6,7 @@
 			:loading="loading"
 			:initial-pagination="initialPagination"
 			@update:page="handlePageUpdate"
+			@selected_date="handleSelectedDate"
 		/>
 	</div>
 </template>
@@ -47,7 +48,8 @@ export default {
 				{
 					text: this.$i18n.t('Base_Table.Date'),
 					value: 'created_at',
-					searchable: true,
+					searchable: false,
+					isDate: true,
 				},
 			],
 			userItems: [],
@@ -60,7 +62,7 @@ export default {
 		async fetchUsers(params = {}) {
 			this.loading = true
 			const query = {
-				page: this.convertToDoubleQuotedJson(this.page),
+				page: this.convertToDoubleQuotedJson(this.initialPagination.page),
 				row_number: this.convertToDoubleQuotedJson(
 					this.initialPagination.itemsPerPage
 				),
@@ -81,14 +83,44 @@ export default {
 				this.loading = false
 			}
 		},
+
+		async handleSelectedDate(dateObj) {
+			try {
+				this.loading = true
+				const requestData = {
+					filters: {
+						created_at: {
+							op: 'between',
+							from: dateObj.filters.created_at.from,
+							to: dateObj.filters.created_at.to,
+						},
+					},
+				}
+				const response_data = await this.$api.post('/user', requestData)
+
+				this.userItems = response_data.data.data.model.data.map((user) => ({
+					avatar: 'https://avatar.iran.liara.run/public/18',
+					created_at: this.convertIsoToShamsi(user.created_at),
+					name: user.first_name,
+					family: user.last_name || '------',
+					phone: user.username,
+				}))
+			} catch (error) {
+				console.error('Error in date filtering:', error)
+				this.$toast.error('خطا در فیلتر کردن بر اساس تاریخ')
+			} finally {
+				this.loading = false
+			}
+		},
+
 		handlePageUpdate(page) {
-			this.page = page
+			this.initialPagination.page = page
 			this.fetchUsers()
 		},
-		convertToDoubleQuotedJson(params) {       //مرتب سازی و فرمت json برای ارسال params
+		convertToDoubleQuotedJson(params) {
 			return JSON.stringify(params, null, 2)
 		},
-		convertIsoToShamsi(isoDate) {           //تبدیل تاریخ میلادی به شمسی
+		convertIsoToShamsi(isoDate) {
 			const date = new Date(isoDate)
 			const year = date.getUTCFullYear()
 			const month = date.getUTCMonth() + 1
@@ -102,6 +134,7 @@ export default {
 	},
 }
 </script>
+
 <style scoped>
 .Base-container {
 	width: 100%;

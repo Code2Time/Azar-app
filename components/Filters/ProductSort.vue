@@ -1,14 +1,17 @@
 <template>
-	<Select
-		dir="ltr"
-		v-model="sortBy"
-		:items="sortOptions"
-		label="Sort by "
-        color="primary"
-		outlined
-		dense
-		@change="updateSort"
-	/>
+	<div class="select-container">
+		<Select
+			style="width: 100px; min-width: 100px; margin-top: 20px"
+			:items="sortOptions"
+			@change="updateSort"
+			v-model="sortBy"
+			label="Sort by "
+			color="primary"
+			dir="ltr"
+			outlined
+			dense
+		/>
+	</div>
 </template>
 
 <script>
@@ -43,3 +46,11 @@ export default {
 	},
 }
 </script>
+<style scoped>
+.select-container {
+  display: flex;
+  justify-content: center; /* وسط چین افقی */
+  align-items: center; /* وسط چین عمودی (اختیاری) */
+  width: 100%;
+}
+</style>
