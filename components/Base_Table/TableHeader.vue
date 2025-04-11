@@ -1,5 +1,8 @@
 <template>
-	<v-card-title class="px-2 py-1 dark-blue-header justify-center align-center" dir="rtl">
+	<v-card-title
+		class="px-2 py-1 dark-blue-header justify-center align-center"
+		dir="rtl"
+	>
 		<div
 			class="d-flex align-center justify-center"
 			style="overflow-x: auto; white-space: nowrap; gap: 12px"
@@ -8,7 +11,7 @@
 				<!-- دکمه جستجو -->
 				<Button
 					:value="$i18n.t('Base_Table.Search')"
-					@click="handleSearch"
+					@click="handleButtonSearch"
 					:loading="searchLoading"
 					:disabled="isSearchDisabled"
 					class="ml-2"
@@ -19,7 +22,7 @@
 			</div>
 
 			<!-- Datepicker ها -->
-			<template v-for="header in headers">
+			<!-- <template v-for="header in headers">
 				<div
 					v-if="header.isDate"
 					:key="header.value"
@@ -86,25 +89,31 @@
 						></v-date-picker>
 					</v-menu>
 				</div>
-			</template>
+			</template> -->
 
 			<!-- فیلدهای جستجو -->
 			<template v-for="header in headers">
 				<div
 					v-if="
-						header.value !== 'avatar' && !header.isDate && header.searchable
+						header.value !== 'avatar'  && header.searchable
 					"
 					:key="header.value"
 					class="d-flex align-center"
 					style="min-width: 180px"
 				>
 					<Input
-						v-model="searchValues[header.value]"
+						v-if="header.searchable"
+						v-model="search[header.value]"
 						:label="header.text"
-						@enter="handleSearch"
+						:hide-details="true"
+						:persistent-hint="false"
+						:single-line="true"
+						@enter="applySearch(header.value)"
+						@input="handleInputChange(header.value)"
+						style="width: 120px"
+						class="grey-input"
+						ref="searchInputs"
 						dir="ltr"
-						dense
-						style="width: 100%"
 					/>
 				</div>
 			</template>
@@ -116,11 +125,13 @@
 import Input from '../Common/Input.vue'
 import Button from '../Common/Button.vue'
 import ProductFilter from '../Filters/ProductSort.vue'
-import moment from 'moment-jalaali'
-
 export default {
 	name: 'TableHeader',
-	components: { Input, Button, ProductFilter },
+	components: {
+		Input,
+		Button,
+		ProductFilter,
+	},
 	props: {
 		headers: {
 			type: Array,
@@ -130,125 +141,66 @@ export default {
 					(header) =>
 						header.value &&
 						typeof header.text === 'string' &&
-						(typeof header.searchable === 'boolean' ||
-							typeof header.isDate === 'boolean')
+						typeof header.searchable === 'boolean'
 				)
 			},
 		},
-		initialSearchValues: {
+		searchValues: {
 			type: Object,
 			default: () => ({}),
 		},
 	},
 	data() {
-		const datePickers = {}
-		const internalDates = {}
-		const formattedDates = {}
-		const searchValues = { ...this.initialSearchValues }
-
-		this.headers.forEach((header) => {
-			if (header.isDate) {
-				datePickers[header.value] = { fromMenu: false, toMenu: false }
-				internalDates[header.value] = { from: null, to: null }
-				formattedDates[header.value] = { from: '', to: '' }
-			}
-		})
-
 		return {
-			searchLoading: false,
-			productFilter: null,
-			datePickers,
-			internalDates,
-			formattedDates,
-			searchValues,
+			search: { ...this.searchValues },
+			lastSearchField: null,
+			inputChanges: {},
 		}
 	},
-	computed: {
-		isSearchDisabled() {
-			const hasTextSearch = Object.values(this.searchValues).some(
-				(val) => val && val.trim()
-			)
-			const hasDateSearch = Object.values(this.internalDates).some(
-				(date) => date.from || date.to
-			)
-			const hasProductFilter = !!this.productFilter
-
-			return !(hasTextSearch || hasDateSearch || hasProductFilter)
+	watch: {
+		searchValues: {
+			handler(newVal) {
+				this.search = { ...newVal }
+			},
+			deep: true,
+		},
+		search: {
+			handler(newVal, oldVal) {
+				const changedField = Object.keys(newVal).find(
+					(key) => newVal[key] !== oldVal[key]
+				)
+				if (changedField && newVal[changedField]) {
+					console.log(`Field ${changedField} changed to:`, newVal[changedField])
+					this.lastSearchField = changedField
+					this.inputChanges[changedField] = newVal[changedField]
+				}
+			},
+			deep: true,
 		},
 	},
 	methods: {
-		handleSearch() {
-			this.searchLoading = true
-
-			const filters = {
-				...this.prepareDateFilters(),
-				...this.prepareTextFilters(),
-				product: this.productFilter,
-			}
-
-			this.$emit('selected_date', { filters })
-
-			setTimeout(() => {
-				this.searchLoading = false
-			}, 500)
+		applySearch(key) {
+			this.lastSearchField = key
+			this.$emit('update:search', { key, value: this.search[key] })
 		},
-
-		prepareDateFilters() {
-			const dateFilters = {}
-
-			this.headers.forEach((header) => {
-				if (header.isDate) {
-					const from = this.internalDates[header.value].from
-					const to = this.internalDates[header.value].to
-
-					if (from || to) {
-						dateFilters[header.value] = {
-							op: 'between',
-							from: from ? this.convertToGregorian(from) + ' 00:00:00' : null,
-							to: to ? this.convertToGregorian(to) + ' 23:59:59' : null,
-						}
+		handleButtonSearch() {
+			if (this.lastSearchField) {
+				this.applySearch(this.lastSearchField)
+			} else {
+				const searchResult = {}
+				this.headers.forEach((header) => {
+					if (header.searchable && this.search[header.value]) {
+						searchResult[header.value] = this.search[header.value]
+					} else {
+						console.log('Searching in all filled fields:', this.search)
 					}
-				}
-			})
-
-			return dateFilters
+				})
+				this.$emit('update:search', searchResult)
+			}
 		},
-
-		handleDateInput(field, type) {
-			const date = this.internalDates[field][type]
-			this.formattedDates[field][type] = date
-				? moment(date).locale('fa').format('jYYYY/jMM/jDD')
-				: ''
-			this.datePickers[field][`${type}Menu`] = false
-		},
-
-		clearDate(field, type) {
-			this.internalDates[field][type] = null
-			this.formattedDates[field][type] = ''
-		},
-
-		convertToGregorian(persianDate) {
-			return moment(persianDate).format('YYYY-MM-DD')
-		},
-
-		prepareTextFilters() {
-			const textFilters = {}
-
-			this.headers.forEach((header) => {
-				if (header.searchable && this.searchValues[header.value]) {
-					textFilters[header.value] = this.searchValues[header.value]
-				}
-			})
-
-			return textFilters
-		},
-	},
-	watch: {
-		initialSearchValues: {
-			handler(newVal) {
-				this.searchValues = { ...newVal }
-			},
-			deep: true,
+		handleInputChange(field) {
+			console.log(`User typed in ${field}:`, this.search[field])
+			this.lastSearchField = field
 		},
 	},
 }

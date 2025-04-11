@@ -45,12 +45,12 @@ export default {
 					value: 'phone',
 					searchable: true,
 				},
-				{
-					text: this.$i18n.t('Base_Table.Date'),
-					value: 'created_at',
-					searchable: false,
-					isDate: true,
-				},
+				// {
+				// 	text: this.$i18n.t('Base_Table.Date'),
+				// 	value: 'created_at',
+				// 	searchable: false,
+				// 	isDate: true,
+				// },
 			],
 			userItems: [],
 		}
@@ -100,7 +100,7 @@ export default {
 
 				this.userItems = response_data.data.data.model.data.map((user) => ({
 					avatar: 'https://avatar.iran.liara.run/public/18',
-					created_at: this.convertIsoToShamsi(user.created_at),
+					// created_at: this.convertIsoToShamsi(user.created_at),
 					name: user.first_name,
 					family: user.last_name || '------',
 					phone: user.username,
