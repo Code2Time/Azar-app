@@ -1,140 +1,138 @@
 <template>
 	<v-card-title
-		class="px-2 py-1 dark-blue-header justify-center align-center"
-		dir="rtl"
+	  class="px-2 py-1 dark-blue-header justify-center"
+	  dir="rtl"
+	  style="overflow-x: auto;"
 	>
-		<div
-			class="d-flex align-center justify-center"
-			style="overflow-x: auto; white-space: nowrap; gap: 12px"
-		>
-			<div class="d-flex align-center" style="gap: 12px">
-				<!-- دکمه جستجو -->
-				<Button
-					:value="$i18n.t('Base_Table.Search')"
-					@click="handleButtonSearch"
-					:loading="searchLoading"
-					:disabled="isSearchDisabled"
-					class="ml-2"
-				/>
-			</div>
-
-			<!-- Datepicker ها -->
-			<template v-for="header in headers">
-				<div
-					v-if="header.isDate"
-					:key="header.value"
-					class="d-flex align-center"
-					style="gap: 8px"
-				>
-					<v-menu
-						v-model="datePickers[header.value].fromMenu"
-						:close-on-content-click="false"
-						transition="scale-transition"
-						offset-y
-						min-width="auto"
-					>
-						<template v-slot:activator="{ on, attrs }">
-							<v-text-field
-								v-model="formattedDates[header.value].from"
-								:label="`از ${header.text}`"
-								prepend-icon="mdi-calendar"
-								readonly
-								clearable
-								v-bind="attrs"
-								v-on="on"
-								@click:clear="clearDate(header.value, 'from')"
-								style="min-width: 150px"
-								dense
-							></v-text-field>
-						</template>
-						<v-date-picker
-							v-model="internalDates[header.value].from"
-							type="date"
-							locale="fa"
-							:max="internalDates[header.value].to"
-							@input="handleDateInput(header.value, 'from')"
-						></v-date-picker>
-					</v-menu>
-
-					<v-menu
-						v-model="datePickers[header.value].toMenu"
-						:close-on-content-click="false"
-						transition="scale-transition"
-						offset-y
-						min-width="auto"
-					>
-						<template v-slot:activator="{ on, attrs }">
-							<v-text-field
-								v-model="formattedDates[header.value].to"
-								:label="`تا ${header.text}`"
-								prepend-icon="mdi-calendar"
-								readonly
-								clearable
-								v-bind="attrs"
-								v-on="on"
-								@click:clear="clearDate(header.value, 'to')"
-								style="min-width: 150px"
-								dense
-							></v-text-field>
-						</template>
-						<v-date-picker
-							v-model="internalDates[header.value].to"
-							type="date"
-							locale="fa"
-							:min="internalDates[header.value].from"
-							@input="handleDateInput(header.value, 'to')"
-						></v-date-picker>
-					</v-menu>
-
-					<v-btn
-						icon
-						color="primary"
-						@click="searchByDate(header.value)"
-						:disabled="!isDateSelected(header.value)"
-					>
-						<v-icon>mdi-magnify</v-icon>
-					</v-btn>
-				</div>
-			</template>
-
-			<!-- فیلدهای جستجو -->
-			<template v-for="header in headers">
-				<div
-					v-if="
-						header.value !== 'avatar' && header.searchable && !header.isDate
-					"
-					:key="header.value"
-					class="d-flex align-center"
-					style="min-width: 180px"
-				>
-					<Input
-						v-model="search[header.value]"
-						:label="header.text"
-						:hide-details="true"
-						:persistent-hint="false"
-						:single-line="true"
-						@enter="applySearch(header.value)"
-						@input="handleInputChange(header.value)"
-						style="width: 120px"
-						class="grey-input"
-						ref="searchInputs"
-						dir="ltr"
-					/>
-				</div>
-			</template>
+	  <div class="d-flex align-center" style="gap: 20px; min-height: 56px;">
+		
+		<div style="flex-shrink: 0;">
+		  <Button
+			:value="$i18n.t('Base_Table.Search')"
+			@click="handleButtonSearch"
+			:loading="searchLoading"
+			:disabled="isSearchDisabled"
+		  />
 		</div>
+  
+		<!-- Datepicker ها -->
+		<template v-for="header in headers">
+		  <div
+			v-if="header.isDate"
+			:key="header.value"
+			class="d-flex align-center"
+			style="gap: 8px; flex-shrink: 0;"
+		  >
+			<v-menu
+			  v-model="datePickers[header.value].fromMenu"
+			  :close-on-content-click="false"
+			  transition="scale-transition"
+			  offset-y
+			  min-width="auto"
+			>
+			  <template v-slot:activator="{ on, attrs }">
+				<v-text-field
+				  v-model="formattedDates[header.value].from"
+				  label="از تاریخ"
+				  prepend-icon="mdi-calendar"
+				  readonly
+				  clearable
+				  v-bind="attrs"
+				  v-on="on"
+				  @click:clear="clearDate(header.value, 'from')"
+				  style="width: 100px;"
+				  dense
+				  hide-details
+				></v-text-field>
+			  </template>
+			  <v-date-picker
+				v-model="internalDates[header.value].from"
+				type="date"
+				locale="fa"
+				:max="internalDates[header.value].to"
+				@input="handleDateInput(header.value, 'from')"
+			  ></v-date-picker>
+			</v-menu>
+  
+			<v-menu
+			  v-model="datePickers[header.value].toMenu"
+			  :close-on-content-click="false"
+			  transition="scale-transition"
+			  offset-y
+			  min-width="auto"
+			>
+			  <template v-slot:activator="{ on, attrs }">
+				<v-text-field
+				  v-model="formattedDates[header.value].to"
+				  label="تا تاریخ"
+				  prepend-icon="mdi-calendar"
+				  readonly
+				  clearable
+				  v-bind="attrs"
+				  v-on="on"
+				  @click:clear="clearDate(header.value, 'to')"
+				  style="width: 100px;"
+				  dense
+				  hide-details
+				></v-text-field>
+			  </template>
+			  <v-date-picker
+				v-model="internalDates[header.value].to"
+				type="date"
+				locale="fa"
+				:min="internalDates[header.value].from"
+				@input="handleDateInput(header.value, 'to')"
+			  ></v-date-picker>
+			</v-menu>
+  
+			<v-btn
+			  icon
+			  color="primary"
+			  @click="searchByDate(header.value)"
+			  :disabled="!isDateSelected(header.value)"
+			  style="flex-shrink: 0;"
+			>
+			  <v-icon>mdi-magnify</v-icon>
+			</v-btn>
+		  </div>
+		</template>
+  
+		<!-- فیلدهای جستجو -->
+		<template v-for="header in headers">
+		  <div
+			v-if="header.value !== 'avatar' && header.searchable && !header.isDate"
+			:key="header.value"
+			style="flex-shrink: 0"
+		  >
+			<Input
+			  v-model="search[header.value]"
+			  :label="header.text"
+			  :hide-details="true"
+			  :persistent-hint="false"
+			  :single-line="true"
+			  @enter="applySearch(header.value)"
+			  @input="handleInputChange(header.value)"
+			  class="grey-input"
+			  ref="searchInputs"
+			  dir="ltr"
+			/>
+		  </div>
+		</template>
+	  </div>
 	</v-card-title>
-</template>
+  </template>
 
 <script>
 import Input from '~/components/Common/Input.vue'
 import Button from '~/components/Common/Button.vue'
+
 
 export default {
 	name: 'TableHeader',
 	components: {
 		Input,
 		Button,
+	
 	},
 	props: {
 		headers: {
@@ -243,8 +241,8 @@ export default {
 					filters: {
 						[field]: {
 							op: 'between',
-							from: this.internalDates[field].from + ' 00:00:00',
-							to: this.internalDates[field].to + ' 00:00:00',
+							from: this.internalDates[field].from+" 00:00:00",
+							to: this.internalDates[field].to+" 00:00:00",
 						},
 					},
 				}
