@@ -122,9 +122,9 @@
 </template>
 
 <script>
-import Input from '../Common/Input.vue'
-import Button from '../Common/Button.vue'
-import ProductFilter from '../Filters/ProductSort.vue'
+import Input from '~/components/Common/Input.vue'
+import Button from '~/components/Common/Button.vue'
+import ProductFilter from '~/components/Filters/ProductSort.vue'
 export default {
 	name: 'TableHeader',
 	components: {
