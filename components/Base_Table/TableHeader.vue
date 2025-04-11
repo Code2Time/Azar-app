@@ -1,6 +1,6 @@
 <template>
 	<v-card-title
-	  class="px-2 py-1 dark-blue-header justify-center"
+	  class="px-2 py-1 dark-blue-header justify-center align-center"
 	  dir="rtl"
 	  style="overflow-x: auto;"
 	>
