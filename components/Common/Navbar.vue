@@ -53,14 +53,14 @@ export default {
 					title: this.$i18n.t('Headers.Test_Basetable'),
 					to: { name: 'users' },
 				},
-				{
-					title: this.$i18n.t('Headers.Products'),
-					to: { name: 'products' },
-				},
-				{
-					title: this.$i18n.t('Headers.Products2'),
-					to: { name: 'products2' },
-				},
+				// {
+				// 	title: this.$i18n.t('Headers.Products'),
+				// 	to: { name: 'products' },
+				// },
+				// {
+				// 	title: this.$i18n.t('Headers.Products2'),
+				// 	to: { name: 'products2' },
+				// },
 			],
 		}
 	},
