@@ -16,13 +16,10 @@
 					:disabled="isSearchDisabled"
 					class="ml-2"
 				/>
-
-				<!-- فیلتر محصول -->
-				<ProductFilter v-model="productFilter" />
 			</div>
 
 			<!-- Datepicker ها -->
-			<!-- <template v-for="header in headers">
+			<template v-for="header in headers">
 				<div
 					v-if="header.isDate"
 					:key="header.value"
@@ -88,21 +85,29 @@
 							@input="handleDateInput(header.value, 'to')"
 						></v-date-picker>
 					</v-menu>
+
+					<v-btn
+						icon
+						color="primary"
+						@click="searchByDate(header.value)"
+						:disabled="!isDateSelected(header.value)"
+					>
+						<v-icon>mdi-magnify</v-icon>
+					</v-btn>
 				</div>
-			</template> -->
+			</template>
 
 			<!-- فیلدهای جستجو -->
 			<template v-for="header in headers">
 				<div
 					v-if="
-						header.value !== 'avatar'  && header.searchable
+						header.value !== 'avatar' && header.searchable && !header.isDate
 					"
 					:key="header.value"
 					class="d-flex align-center"
 					style="min-width: 180px"
 				>
 					<Input
-						v-if="header.searchable"
 						v-model="search[header.value]"
 						:label="header.text"
 						:hide-details="true"
@@ -124,13 +129,12 @@
 <script>
 import Input from '~/components/Common/Input.vue'
 import Button from '~/components/Common/Button.vue'
-import ProductFilter from '~/components/Filters/ProductSort.vue'
+
 export default {
 	name: 'TableHeader',
 	components: {
 		Input,
 		Button,
-		ProductFilter,
 	},
 	props: {
 		headers: {
@@ -151,11 +155,46 @@ export default {
 		},
 	},
 	data() {
+		// Initialize date pickers data structure
+		const datePickers = {}
+		const internalDates = {}
+		const formattedDates = {}
+
+		this.headers.forEach((header) => {
+			if (header.isDate) {
+				datePickers[header.value] = {
+					fromMenu: false,
+					toMenu: false,
+				}
+				internalDates[header.value] = {
+					from: null,
+					to: null,
+				}
+				formattedDates[header.value] = {
+					from: null,
+					to: null,
+				}
+			}
+		})
+
 		return {
 			search: { ...this.searchValues },
 			lastSearchField: null,
 			inputChanges: {},
+			datePickers,
+			internalDates,
+			formattedDates,
+			searchLoading: false,
 		}
+	},
+	computed: {
+		isSearchDisabled() {
+			// Check if any search field has value
+			return (
+				!Object.values(this.search).some((val) => val) &&
+				!Object.values(this.internalDates).some((date) => date.from || date.to)
+			)
+		},
 	},
 	watch: {
 		searchValues: {
@@ -179,6 +218,41 @@ export default {
 		},
 	},
 	methods: {
+		isDateSelected(field) {
+			return this.internalDates[field]?.from && this.internalDates[field]?.to
+		},
+		handleDateInput(field, type) {
+			this.datePickers[field][`${type}Menu`] = false
+			this.formatDate(field, type)
+		},
+		formatDate(field, type) {
+			if (this.internalDates[field][type]) {
+				const date = new Date(this.internalDates[field][type])
+				this.formattedDates[field][type] = date.toLocaleDateString('fa-IR')
+			} else {
+				this.formattedDates[field][type] = null
+			}
+		},
+		clearDate(field, type) {
+			this.internalDates[field][type] = null
+			this.formattedDates[field][type] = null
+		},
+		searchByDate(field) {
+			if (this.internalDates[field].from && this.internalDates[field].to) {
+				const dateObj = {
+					filters: {
+						[field]: {
+							op: 'between',
+							from: this.internalDates[field].from + ' 00:00:00',
+							to: this.internalDates[field].to + ' 00:00:00',
+						},
+					},
+				}
+
+				console.log('Date filter object:', dateObj)
+				this.$emit('selected_date', dateObj)
+			}
+		},
 		applySearch(key) {
 			this.lastSearchField = key
 			this.$emit('update:search', { key, value: this.search[key] })
@@ -189,10 +263,12 @@ export default {
 			} else {
 				const searchResult = {}
 				this.headers.forEach((header) => {
-					if (header.searchable && this.search[header.value]) {
+					if (
+						header.searchable &&
+						this.search[header.value] &&
+						!header.isDate
+					) {
 						searchResult[header.value] = this.search[header.value]
-					} else {
-						console.log('Searching in all filled fields:', this.search)
 					}
 				})
 				this.$emit('update:search', searchResult)
@@ -205,42 +281,3 @@ export default {
 	},
 }
 </script>
-
-<style scoped>
-.select-container {
-	display: flex;
-	justify-content: center; /* وسط چین افقی */
-	align-items: center; /* وسط چین عمودی (اختیاری) */
-	width: 100%;
-}
-.dark-blue-header {
-	background-color: #666a6f7b;
-	border-radius: 4px 4px 0 0;
-	overflow-x: auto;
-}
-
-/* اسکرول بار سفارشی */
-.dark-blue-header::-webkit-scrollbar {
-	height: 6px;
-}
-.dark-blue-header::-webkit-scrollbar-track {
-	background: #f1f1f1;
-}
-.dark-blue-header::-webkit-scrollbar-thumb {
-	background: #888;
-	border-radius: 3px;
-}
-.dark-blue-header::-webkit-scrollbar-thumb:hover {
-	background: #555;
-}
-
-.date-input {
-	min-width: 150px;
-}
-
-@media (max-width: 960px) {
-	.date-input {
-		min-width: 130px;
-	}
-}
-</style>

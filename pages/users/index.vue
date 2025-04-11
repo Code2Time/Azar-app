@@ -45,12 +45,12 @@ export default {
 					value: 'phone',
 					searchable: true,
 				},
-				// {
-				// 	text: this.$i18n.t('Base_Table.Date'),
-				// 	value: 'created_at',
-				// 	searchable: false,
-				// 	isDate: true,
-				// },
+				{
+					text: this.$i18n.t('Base_Table.Date'),
+					value: 'created_at',
+					searchable: false,
+					isDate: true,
+				},
 			],
 			userItems: [],
 		}
@@ -100,7 +100,7 @@ export default {
 
 				this.userItems = response_data.data.data.model.data.map((user) => ({
 					avatar: 'https://avatar.iran.liara.run/public/18',
-					// created_at: this.convertIsoToShamsi(user.created_at),
+					created_at: this.convertIsoToShamsi(user.created_at),
 					name: user.first_name,
 					family: user.last_name || '------',
 					phone: user.username,
@@ -122,15 +122,9 @@ export default {
 			return JSON.stringify(params, null, 2)
 		},
 		convertIsoToShamsi(isoDate) {
-			const date = new Date(isoDate)
-			const year = date.getUTCFullYear()
-			const month = date.getUTCMonth() + 1
-			const day = date.getUTCDate()
-			let shamsiYear = year - 621
-			if (month > 3) {
-				shamsiYear++
-			}
-			return `${shamsiYear}/${month}/${day}`
+			const shamsiDate = new Date(isoDate).toLocaleDateString('fa-IR-u-nu-latn')
+			const [year, month, day] = shamsiDate.split('/')
+			return `${year}/${month}/${day}`
 		},
 	},
 }
